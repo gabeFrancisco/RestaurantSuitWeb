@@ -1,0 +1,11 @@
+.LoginPage{
+    background-color: rgba(207, 220, 233, 0.67);
+    padding: 0.3rem;
+}
+
+.LoginPage .Form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.3rem;
+}
