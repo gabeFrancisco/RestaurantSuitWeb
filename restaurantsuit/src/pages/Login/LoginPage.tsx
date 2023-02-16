@@ -1,16 +1,29 @@
 import { useFormik } from "formik";
-import React from "react";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { LoginService } from "../../services/loginService";
+import { fetchUser } from "../../store/features/userSlice";
+import { useAppDispatch } from "../../store/store";
 
 import "./LoginPage.css";
 
 export default function LoginPage() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (LoginService.getUser()) {
+      navigate("/");
+    }
+  }, []);
+  const dispatch = useAppDispatch();
   const formik = useFormik({
     initialValues: {
       username: "",
       password: "",
     },
     onSubmit: (values) => {
-      console.log(JSON.stringify(values, null, 2));
+      dispatch(fetchUser(values)).then(() => {
+        navigate("/");
+      });
     },
   });
 
