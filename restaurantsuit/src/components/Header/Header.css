@@ -1,6 +1,6 @@
 .Header{
-  background-color: #fd7272;
-  height: 4rem;
+  background: linear-gradient(to right, var(--primary), var(--primary), var(--primary),var(--primaryGd));
+  height: 3.5rem;
   color: #fff;
   display: flex;
   flex-direction: row;

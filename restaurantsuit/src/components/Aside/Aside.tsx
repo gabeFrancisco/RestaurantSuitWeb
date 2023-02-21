@@ -8,7 +8,7 @@ export default function Aside() {
     <aside>
       <ul>
         <li>
-          <Link to="home">Painel</Link>
+          <Link to="home"><i className="fas fa-home fa-fw"></i>Painel</Link>
         </li>
         <li>
           <Link to="categories">Categorias</Link>

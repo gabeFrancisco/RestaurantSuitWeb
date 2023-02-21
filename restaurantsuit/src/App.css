@@ -1,5 +1,11 @@
 #root {
   margin: 0;
+  --primary: #2A79C6;
+  --primaryGd: #4e96de;
+  --secondary: #4B4B4D;
+  --danger: #fd7272;
+  --success: #059862;
+  --warning: #059862
 }
 
 /* width */
@@ -14,11 +20,83 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #fd7272;
-  border-radius: 1rem;
+  background: #4e96de;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #fd7272;
+  background: #2A79C6;
+}
+
+button,
+fieldset,
+input,
+legend,
+select,
+textarea {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 1rem;
+  font-family: 'Josefin Sans', sans-serif;
+  border-radius: 2rem;
+}
+
+input,
+select,
+textarea {
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+  background-color: white;
+  border-radius: 0.25rem;
+  padding: 0.5rem 0.75rem;
+}
+
+textarea:focus, input:focus {
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  outline: none;
+  transition: box-shadow 0.3s;
+}
+
+textarea {
+  min-height: 10rem;
+}
+
+
+button {
+  border-radius: 10px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.5em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  color: #fff;
+}
+
+button:hover{
+  transform: scale(1.050);
+  transition: transform 0.2s;
+}
+
+.btn-primary {
+  background-color: #fd7272;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: #c64e4e;
+}
+
+.btn-secondary{
+  background-color: #6399fc;
+  color: #ffffff;
+}
+
+.btn-secondary:hover {
+  background-color: #5485e0;
 }

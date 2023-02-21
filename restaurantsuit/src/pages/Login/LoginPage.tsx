@@ -5,8 +5,6 @@ import LoginService from "../../services/loginService";
 import { fetchLogin } from "../../store/features/authSlice";
 import { useAppDispatch } from "../../store/store";
 
-import tableFoodBg from '../../assets/tableFoodBg.jpg'
-
 import "./LoginPage.css";
 
 export default function LoginPage() {
@@ -56,7 +54,7 @@ export default function LoginPage() {
             />
           </div>
           <div className="Form">
-            <button type="submit">Entrar!</button>
+            <button type="submit" className="btn-secondary">Entrar!</button>
           </div>
         </form>
       </div>

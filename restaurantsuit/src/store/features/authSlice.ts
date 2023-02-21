@@ -1,7 +1,5 @@
-const BASE_URL = "https://localhost:5001/api";
-
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import axios from "axios";
+import apiService from "../../services/apiService";
 import { User } from "../../models/interfaces/User";
 import loginService from "../../services/loginService";
 
@@ -32,8 +30,8 @@ const initialState: AuthState = {
 export const fetchLogin = createAsyncThunk(
   "auth/login/fetch",
   async (data: {}, thunkAPI) => {
-    const response = (await axios
-      .post(`${BASE_URL}/users/login`, data)
+    const response = (await apiService
+      .post(`/users/login`, data)
       .then((res) => res.data)) as AuthState; 
     loginService.loginUser(JSON.stringify(response.token))
     return response;
@@ -48,10 +46,8 @@ export const fetchUser = createAsyncThunk(
       throw "No token has been registered on storage!"
     }
     else{
-      const response = (await axios
-        .get(`${BASE_URL}/users`, {
-          headers: { Authorization: `Bearer ${loginService.getToken()}`}
-        })
+      const response = (await apiService
+        .get(`/users`)
         .then((res) => res.data))
       return response;
     }
