@@ -1,0 +1,9 @@
+.App-Area{
+  display: flex;
+  flex-direction: row;
+}
+
+.App-Area .Pages-Area{
+  padding: 1.5rem 2.5rem;
+  flex-grow: 11;
+}

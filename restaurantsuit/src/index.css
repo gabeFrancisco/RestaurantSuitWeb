@@ -1,5 +1,5 @@
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
@@ -15,6 +15,12 @@
   -webkit-text-size-adjust: 100%;
 }
 
+html{
+  height: 100%;
+  width: 100%;
+
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -28,6 +34,7 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  height: 100%;
 }
 
 h1 {
@@ -46,7 +53,7 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
+button:hover {  
   background-color: #5d84d3;;
 }
 
@@ -59,7 +66,7 @@ button:hover {
     color: #747bff;
   }
   button {
-    background-color: #6e9dfa;
+    background-color: #fd7272;
     color: #ffffff;
   }
 }

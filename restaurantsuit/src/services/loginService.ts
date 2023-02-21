@@ -1,25 +1,26 @@
-import axios from "axios";
-import { useAppDispatch } from "../store/store";
-
-export class LoginService {
-  static loginUser = (token: string, userId: string) => {
+class LoginService {
+  loginUser = (token: string) => {
     if (token) {
-      localStorage.setItem("user_token", token);
-      localStorage.setItem("user_id", userId);
+      localStorage.setItem("token", token);
     }
   };
 
-  static getUser = () => {
-    if (localStorage.length > 0) {
+  checkAuth = () => {
+    if (localStorage.getItem("token")) {
       return true;
-    }
-    else{
+    } else {
       return false;
     }
   };
 
-  static logoutUser = () => {
+  getToken = () : string | null => {
+    const authDate= JSON.parse(localStorage.getItem("token") || '{}')
+    return authDate
+  };
+
+  logoutUser = () => {
     localStorage.clear();
   };
 }
 
+export default new LoginService();

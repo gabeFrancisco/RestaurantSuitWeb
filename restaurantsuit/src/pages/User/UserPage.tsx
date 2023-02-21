@@ -1,14 +1,16 @@
 import React, { useEffect } from 'react'
+import { useAppSelector } from '../../store/store'
 
-interface UserProps{
-  id: number
-  username: string
-}
-
-export default function UserPage(props: UserProps){
+export default function UserPage(){
+  const user = useAppSelector(state => state.auth.user)
   return (
     <div>
-      <h1>Hello {props.username}</h1>
+      <h2>Dados do usuário:</h2>
+      <p>Nick: {user.username}</p>
+      <p>Nome: {user.name}</p>
+      <p>Email: {user.email}</p>
+      <p>Registrado em {user.createdAt}</p>
+      <p>Último grupo de serviço: {user.lastUserWorkGroup}</p>
     </div>
   )
 }

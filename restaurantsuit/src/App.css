@@ -1,31 +1,24 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  margin: 0;
 }
 
-
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
 }
 
-.card {
-  padding: 2em;
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #fd7272;
+  border-radius: 1rem;
 }
 
-.read-the-docs {
-  color: #888;
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #fd7272;
 }

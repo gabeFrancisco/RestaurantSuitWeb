@@ -1,11 +1,28 @@
 .LoginPage{
-    background-color: rgba(207, 220, 233, 0.67);
-    padding: 0.3rem;
-}
-
-.LoginPage .Form{
+    margin: 0;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding: 0.3rem;
+    background-image: url("../../assets/tableFoodBg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+    text-align: center;
+}
+
+.LoginPage .FormArea{
+    background: linear-gradient(to right, #e8e8e8ef, #e8e8e8e6, #de9292bc);
+    width: 50vw;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
+.LoginPage .FormArea .Form{
+    margin: 1.3rem
+}
+
+.LoginPage .FormArea .Form input{
+    margin-left: 1rem;
 }
