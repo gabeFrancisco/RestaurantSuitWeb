@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import loginService from "./services/loginService";
 import { fetchUser } from "./store/features/authSlice";
 import Header from "./components/Header/Header";
+import CategoriesPage from "./pages/Categories/CategoriesPage";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -23,6 +24,7 @@ function App() {
           <Route element={<PrivateRoutes />}>
             <Route path="home" element={<HomePage />} />
             <Route path="user" element={<UserPage />} />
+            <Route path="categories" element={<CategoriesPage/>}/>
           </Route>
           <Route path="*" element={<h1>Página não encontrada :(</h1>} />
         </Routes>

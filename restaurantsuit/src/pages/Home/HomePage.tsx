@@ -1,10 +1,13 @@
-import React from 'react'
+import React from "react";
+import SectionTitle from "../../components/SectionTitle/SectionTitle";
 
-export default function HomePage(){
-  return(
-    <div>
-     <h1>Bem vindo!</h1>
-     <h3>Pagina inicial</h3>
+export default function HomePage() {
+  return (
+    <div className="PageFade">
+      <SectionTitle
+        title="Painel"
+        subtitle="Aqui você verá um resumo de todo o seu negócio!"
+      />
     </div>
-  )
+  );
 }

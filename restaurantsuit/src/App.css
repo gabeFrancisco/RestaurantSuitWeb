@@ -1,6 +1,21 @@
+@keyframes PageFadeAnimation {
+  0%{
+    opacity: 0%;
+  }
+  100%{
+    opacity: 100%;
+  }
+}
+
+.PageFade{
+  animation: PageFadeAnimation 0.4s forwards;
+}
+
 #root {
   margin: 0;
+  --white: #eee;
   --primary: #2A79C6;
+  --primaryDk:#4688ca;
   --primaryGd: #4e96de;
   --secondary: #4B4B4D;
   --danger: #fd7272;
@@ -76,6 +91,7 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
   color: #fff;
+  margin: 0 0.3rem
 }
 
 button:hover{
@@ -83,20 +99,55 @@ button:hover{
   transition: transform 0.2s;
 }
 
+.btn-sm{
+  font-size: 0.8em;
+}
+
 .btn-primary {
-  background-color: #fd7272;
-  color: #ffffff;
-}
-
-.btn-primary:hover {
-  background-color: #c64e4e;
-}
-
-.btn-secondary{
   background-color: #6399fc;
   color: #ffffff;
 }
 
-.btn-secondary:hover {
+.btn-primary:hover {
   background-color: #5485e0;
 }
+
+.btn-secondary{
+  background-color: #6863fc;
+  color: #ffffff;
+}
+
+.btn-secondary:hover {
+  background-color: #514cd3;
+}
+
+.btn-success{
+  background-color: #45c576;
+  color: #ffffff;
+}
+
+.btn-success:hover {
+  background-color: #37a260;
+}
+
+.btn-warning{
+  background-color: #e9c474;
+  color: #ffffff;
+}
+
+.btn-warning:hover {
+  background-color: #b19c51;
+}
+
+.btn-danger{
+  background-color: #e97474;
+  color: #ffffff;
+}
+
+.btn-danger:hover {
+  background-color: #b95a5a;
+}
+
+
+
+

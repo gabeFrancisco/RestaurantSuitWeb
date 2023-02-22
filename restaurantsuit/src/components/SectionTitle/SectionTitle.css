@@ -1,0 +1,31 @@
+@keyframes TitleAnimation {
+  0%{
+    width: 0%
+  }
+  100%{
+    width: 100%
+  }
+}
+
+.SectionTitle{
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.SectionTitle h1{
+  font-size: 2.4rem;
+  font-weight: 500;
+  margin: 1rem 0;
+}
+
+.SectionTitle h2{
+  font-weight: 200;
+}
+
+.Growing-Line{
+  border-radius: 5px;
+  margin-top: 1rem;
+  height: 0.3rem;
+  background: linear-gradient(to right, var(--primary), #b0d3f5) ;
+  animation: TitleAnimation 1s forwards;
+}
