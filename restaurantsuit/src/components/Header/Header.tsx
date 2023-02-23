@@ -5,13 +5,15 @@ import { useAppSelector } from "../../store/store";
 
 import "./Header.css";
 
+import logo from '../../assets/logo.jpeg'
+
 export default function Header() {
   const navigate = useNavigate();
   const user = useAppSelector(state => state.auth.user);
   return (
     <header className="Header">
       <div className="Title">
-        <h2>Restaurant Suit</h2>
+        <h2>LandUp</h2>
       </div>
       <div className="User-Actions">
         <p>Seja bem-vindo <b>{user.username}</b>!</p>

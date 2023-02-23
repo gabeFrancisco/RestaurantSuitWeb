@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import "./Aside.css";
+import "./Sidebar.css";
 
-export default function Aside() {
+export default function Sidebar() {
   return (
     <aside>
       <ul>

@@ -2,7 +2,7 @@ import React from "react";
 
 import { Navigate, Outlet } from "react-router-dom";
 import LoginService from "../../services/loginService";
-import Aside from "../Aside/Aside";
+import Aside from "../Sidebar/Sidebar";
 import Header from "../Header/Header";
 
 import "./PrivateRoutes.css";
