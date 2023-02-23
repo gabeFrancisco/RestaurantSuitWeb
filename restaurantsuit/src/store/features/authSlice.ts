@@ -48,7 +48,7 @@ export const fetchUser = createAsyncThunk(
     else{
       const response = (await apiService
         .get(`/users`)
-        .then((res) => res.data))
+        .then(res => res.data))
       return response;
     }
   }

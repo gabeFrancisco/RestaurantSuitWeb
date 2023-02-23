@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { fetchAllCategories } from "../../store/features/categoriesSlice";
+import { useAppDispatch, useAppSelector } from "../../store/store";
 
 import "./CategoryTable.css";
 
 export default function CategoryTable() {
+  // const dispatch = useAppDispatch();
+  // useEffect(() => {
+  //   console.log(dispatch(fetchAllCategories()))
+  // })
+
+  const categories = useAppSelector((state) => state.categories.categoryList);
   return (
     <div className="CategoryTable">
       <table>
@@ -15,24 +23,19 @@ export default function CategoryTable() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Xis</td>
-            <td>Amarelo</td>
-            <td>5</td>
-            <td className="button-area">
-              <button className="btn-sm btn-warning">Editar</button>
-              <button className="btn-sm btn-danger">Apagar</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Bebidas</td>
-            <td>Verde</td>
-            <td>8</td>
-            <td className="button-area">
-              <button className="btn-sm btn-warning">Editar</button>
-              <button className="btn-sm btn-danger">Apagar</button>
-            </td>
-          </tr>
+          {categories.map((cat) => {
+            return (
+              <tr>
+                <td>{cat.name}</td>
+                <td>{cat.color}</td>
+                <td>5</td>
+                <td className="button-area">
+                  <button className="btn-sm btn-warning">Editar</button>
+                  <button className="btn-sm btn-danger">Apagar</button>
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>

@@ -21,7 +21,6 @@ export default function LoginPage() {
       password: "",
     },
     onSubmit: (values) => {
-      console.log(values);
       dispatch(fetchLogin(values)).then(() => {
         navigate("/home");
       });
