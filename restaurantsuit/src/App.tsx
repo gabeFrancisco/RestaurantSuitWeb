@@ -1,21 +1,23 @@
-import "./App.css";
+import { BrowserRouter, Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { useAppDispatch } from "./store/store";
+import { useEffect } from "react";
+import { fetchUser } from "./store/features/authSlice";
+
 import LoginPage from "./pages/Login/LoginPage";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/Home/HomePage";
 import UserPage from "./pages/User/UserPage";
 import PrivateRoutes from "./components/PrivateRoutes/PrivateRoutes";
-import { useAppDispatch } from "./store/store";
-import { useEffect } from "react";
-import loginService from "./services/loginService";
-import { fetchUser } from "./store/features/authSlice";
-import Header from "./components/Header/Header";
 import CategoriesPage from "./pages/Categories/CategoriesPage";
+
+import "./App.css";
+import NotFoundPage from "./pages/NotFound/NotFoundPage";
 
 function App() {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fetchUser());
   }, []);
+
   return (
     <BrowserRouter>
       <div className="App">
@@ -26,7 +28,7 @@ function App() {
             <Route path="user" element={<UserPage />} />
             <Route path="categories" element={<CategoriesPage/>}/>
           </Route>
-          <Route path="*" element={<h1>Página não encontrada :(</h1>} />
+          <Route path="*" element={<NotFoundPage/>} />
         </Routes>
       </div>
     </BrowserRouter>

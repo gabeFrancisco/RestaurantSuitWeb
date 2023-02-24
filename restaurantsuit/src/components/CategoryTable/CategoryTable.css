@@ -21,6 +21,11 @@
   padding: 0.3rem 8rem 0.3rem 1rem;
 }
 
+.Category-Color{
+  padding: 1rem;
+  border-radius: 16px;
+}
+
 .button-area{
   width: 100%;
   display: flex;

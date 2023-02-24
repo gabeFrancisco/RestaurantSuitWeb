@@ -1,5 +1,5 @@
 .Header{
-  background: linear-gradient(to right, var(--primary), var(--primary), var(--primary),var(--primaryGd));
+  background: linear-gradient(to right,var(--primaryGd), var(--primary), var(--primary), var(--primary),var(--primaryGd));
   height: 3.5rem;
   color: #fff;
   display: flex;
@@ -12,6 +12,20 @@
 
 .Header h1,h2{
   margin: 0;
+}
+
+.Header .Title{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0 2rem;
+}
+
+.Header .Title img{
+  width: 2.2rem;
+  height: auto;
+  margin-right: 1rem;
 }
 
 .Header .User-Actions{

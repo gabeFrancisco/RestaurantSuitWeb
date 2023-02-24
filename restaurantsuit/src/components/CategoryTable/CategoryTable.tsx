@@ -5,10 +5,10 @@ import { useAppDispatch, useAppSelector } from "../../store/store";
 import "./CategoryTable.css";
 
 export default function CategoryTable() {
-  // const dispatch = useAppDispatch();
-  // useEffect(() => {
-  //   console.log(dispatch(fetchAllCategories()))
-  // })
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    console.log(dispatch(fetchAllCategories()))
+  })
 
   const categories = useAppSelector((state) => state.categories.categoryList);
   return (
@@ -27,7 +27,13 @@ export default function CategoryTable() {
             return (
               <tr>
                 <td>{cat.name}</td>
-                <td>{cat.color}</td>
+                <td className="Category-Color-Wrapper">
+                  <div className="Category-Color"
+                    style={{
+                      backgroundColor: cat.color
+                    }}
+                  ></div>
+                </td>
                 <td>5</td>
                 <td className="button-area">
                   <button className="btn-sm btn-warning">Editar</button>

@@ -11,7 +11,7 @@ export default function CategoriesPage() {
       />
 
       <div>
-        <button className="btn btn-success">Nova categoria</button>
+        <button className="btn btn-success"><i className="fas fa-plus  fa-fw"></i>Nova categoria</button>
       </div>
       <CategoryTable/>
     </div>
