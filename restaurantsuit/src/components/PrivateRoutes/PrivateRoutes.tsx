@@ -1,14 +1,23 @@
 import React, { useEffect } from "react";
 
-import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import loginService from "../../services/loginService";
 import Aside from "../Sidebar/Sidebar";
 import Header from "../Header/Header";
 
 import "./PrivateRoutes.css";
+import { useAppDispatch, useAppSelector } from "../../store/store";
+import { fetchUser } from "../../store/features/authSlice";
 
 export default function PrivateRoutes() {
-  let auth = loginService.checkAuth();
+  const auth = loginService.checkAuth();
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if(auth){
+      dispatch(fetchUser())    
+    }
+  },[])
   return auth ? (
     <>
       <Header />

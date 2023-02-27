@@ -1,16 +1,21 @@
 import { BrowserRouter, Route, Routes, useLocation, useNavigate } from "react-router-dom";
-import { useAppDispatch } from "./store/store";
-import { useEffect } from "react";
-import { fetchUser } from "./store/features/authSlice";
+// import { useAppDispatch } from "./store/store";
+// import { useEffect } from "react";
+// import { fetchUser } from "./store/features/authSlice";
 
 import LoginPage from "./pages/Login/LoginPage";
 import HomePage from "./pages/Home/HomePage";
 import UserPage from "./pages/User/UserPage";
 import PrivateRoutes from "./components/PrivateRoutes/PrivateRoutes";
 import CategoriesPage from "./pages/Categories/CategoriesPage";
+import NotFoundPage from "./pages/NotFound/NotFoundPage";
+
+import { fetchUser } from "./store/features/authSlice";
+import { useAppDispatch } from "./store/store";
+import { useEffect } from "react";
 
 import "./App.css";
-import NotFoundPage from "./pages/NotFound/NotFoundPage";
+import loginService from "./services/loginService";
 
 function App() {
   const dispatch = useAppDispatch();

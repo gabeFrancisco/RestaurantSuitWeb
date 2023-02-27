@@ -5,17 +5,11 @@ class LoginService {
     }
   };
 
-  checkAuth = () => {
-    if (localStorage.getItem("token")) {
-      return true;
-    } else {
-      return false;
-    }
-  };
+  checkAuth = () => (localStorage.getItem("token") !== null ? true : false);
 
-  getToken = () : string | null => {
-    const authDate= JSON.parse(localStorage.getItem("token") || '{}')
-    return authDate
+  getToken = (): string | null => {
+    const authDate = JSON.parse(localStorage.getItem("token") || "{}");
+    return authDate;
   };
 
   logoutUser = () => {

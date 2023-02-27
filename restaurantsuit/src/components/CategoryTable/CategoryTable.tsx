@@ -5,12 +5,13 @@ import { useAppDispatch, useAppSelector } from "../../store/store";
 import "./CategoryTable.css";
 
 export default function CategoryTable() {
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    console.log(dispatch(fetchAllCategories()))
-  })
-
   const categories = useAppSelector((state) => state.categories.categoryList);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAllCategories());
+  }, [])
+
   return (
     <div className="CategoryTable">
       <table>

@@ -5,8 +5,7 @@ import "./index.css";
 
 import { Provider } from "react-redux";
 import { store } from "./store/store";
-import axios from "axios";
-import loginService from "./services/loginService";
+
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <Provider store={store}>

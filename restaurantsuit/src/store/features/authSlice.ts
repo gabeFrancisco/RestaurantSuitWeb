@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import apiService from "../../services/apiService";
 import { User } from "../../models/interfaces/User";
 import loginService from "../../services/loginService";
+import axios from "axios";
 
 interface AuthState {
   user: User;
@@ -30,29 +31,25 @@ const initialState: AuthState = {
 export const fetchLogin = createAsyncThunk(
   "auth/login/fetch",
   async (data: {}, thunkAPI) => {
-    const response = (await apiService
-      .post(`/users/login`, data)
-      .then((res) => res.data)) as AuthState; 
-    loginService.loginUser(JSON.stringify(response.token))
+    const response = (await axios
+      .post(`http://10.0.10.250:5001/api/users/login`, data)
+      .then((res) => res.data)) as AuthState;
+
+    loginService.loginUser(JSON.stringify(response.token));
+    apiService.defaults.headers.common["Authorization"] = `Bearer ${loginService.getToken()}`
     return response;
   }
 );
 
-export const fetchUser = createAsyncThunk(
-  "auth/user/fetch",
-  async () => {
-    const token = loginService.getToken()
-    if(!token){
-      throw "No token has been registered on storage!"
-    }
-    else{
-      const response = (await apiService
-        .get(`/users`)
-        .then(res => res.data))
-      return response;
-    }
+export const fetchUser = createAsyncThunk("auth/user/fetch", async () => {
+  const token = loginService.checkAuth();
+  if (!token) {
+    throw "No token has been registered on storage!";
+  } else {
+    const response = await apiService.get(`/users`).then((res) => res.data);
+    return response;
   }
-)
+});
 
 export const AuthSlice = createSlice({
   name: "User",
@@ -71,16 +68,16 @@ export const AuthSlice = createSlice({
 
     builder.addCase(fetchUser.fulfilled, (state, action) => {
       state.user = action.payload;
-      state.token = loginService.getToken() || '{}'
-      state.message = `Session of the user ${state.user.username} was restored!`
-      state.isLogged = true
-    })
+      state.token = loginService.getToken() || "{}";
+      state.message = `Session of the user ${state.user.username} was restored!`;
+      state.isLogged = true;
+    });
 
-    builder.addCase(fetchUser.rejected, (state, action) =>{
-      state.message = "An error has occurred while reading the user data!"
-    })
+    builder.addCase(fetchUser.rejected, (state, actionm) => {
+      state.message = "An error has occurred while reading the user data!";
+    });
   },
 });
 
 export default AuthSlice.reducer;
-export const { } = AuthSlice.actions;
+export const {} = AuthSlice.actions;
