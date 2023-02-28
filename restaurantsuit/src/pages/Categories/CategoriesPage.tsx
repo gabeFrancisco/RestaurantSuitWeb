@@ -1,6 +1,6 @@
 import React from "react";
 import CategoryTable from "../../components/CategoryTable/CategoryTable";
-import SectionTitle from "../../components/SectionTitle/SectionTitle";
+import SectionTitle from "../../Widgets/SectionTitle/SectionTitle";
 
 export default function CategoriesPage() {
   return (

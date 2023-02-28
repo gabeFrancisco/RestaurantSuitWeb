@@ -1,0 +1,12 @@
+.Card{
+  border-radius: 15px;
+  background-color: #f8f8f8;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  font-weight: 300;
+  margin: 1rem;
+  padding: 1.7rem;
+}
+
+.Card h1,h2,h3{
+  font-weight: 400;
+}

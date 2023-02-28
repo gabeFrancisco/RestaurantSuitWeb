@@ -9,7 +9,7 @@ export default function NotFoundPage() {
 
   useEffect(() => {
     setTimeout(() => {
-      navigate("/home");
+      navigate("/dashboard");
     }, 5000);
   }, []);
 

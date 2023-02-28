@@ -11,7 +11,7 @@ export default function LoginPage() {
   const navigate = useNavigate();
   useEffect(() => {
     if (LoginService.checkAuth()) {
-      navigate("/home");
+      navigate("/dashboard");
     }
   }, []);
   const dispatch = useAppDispatch();
@@ -22,7 +22,7 @@ export default function LoginPage() {
     },
     onSubmit: (values) => {
       dispatch(fetchLogin(values)).then(() => {
-        navigate("/home");
+        navigate("/dashboard");
       });
     },
   });
