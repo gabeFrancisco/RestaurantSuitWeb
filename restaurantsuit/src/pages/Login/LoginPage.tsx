@@ -33,8 +33,9 @@ export default function LoginPage() {
         <h1>Seja bem-vindo!</h1>
         <form onSubmit={formik.handleSubmit}>
           <div className="Form">
-            <label htmlFor="username">Usuário</label>
+            {/* <label htmlFor="username">Usuário</label> */}
             <input
+              placeholder="Usuário"
               id="username"
               type="text"
               name="username"
@@ -43,8 +44,9 @@ export default function LoginPage() {
             />
           </div>
           <div className="Form">
-            <label htmlFor="password">Senha</label>
+            {/* <label htmlFor="password">Senha</label> */}
             <input
+              placeholder="Senha"
               id="password"
               type="password"
               name="password"
@@ -53,7 +55,9 @@ export default function LoginPage() {
             />
           </div>
           <div className="Form">
-            <button type="submit" className="btn-secondary">Entrar!</button>
+            <button type="submit" className="btn-secondary">
+              Entrar!
+            </button>
           </div>
         </form>
       </div>

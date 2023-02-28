@@ -63,7 +63,7 @@ textarea {
 input,
 select,
 textarea {
-  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   background-color: white;
   border-radius: 0.25rem;
   padding: 0.5rem 0.75rem;

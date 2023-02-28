@@ -1,5 +1,5 @@
 .Header{
-  background: linear-gradient(to right,var(--primaryGd), var(--primary), var(--primary), var(--primary),var(--primaryGd));
+  background: linear-gradient(to right, var(--primary), var(--primary), var(--primary),var(--primaryGd));
   height: 3.5rem;
   color: #fff;
   display: flex;

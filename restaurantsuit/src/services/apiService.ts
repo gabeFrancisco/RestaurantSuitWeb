@@ -21,8 +21,8 @@ apiService.interceptors.response.use(
   },
   (error) => {
     if (error.response.status === 401) {
-			// loginService.logoutUser()
-			// window.location.pathname = '/login'
+			loginService.logoutUser()
+			window.location.pathname = '/login'
     }
   }
 )

@@ -14,9 +14,13 @@
 
 .LoginPage .FormArea{
     background: linear-gradient(to right, #e8e8e8ef, #e8e8e8e6, #92b6debc);
-    width: 50vw;
+    min-width: 35vw;
     border-radius: 15px;
     box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
+.LoginPage .FormArea h1{
+    margin: 1.5rem;
 }
 
 .LoginPage .FormArea .Form{

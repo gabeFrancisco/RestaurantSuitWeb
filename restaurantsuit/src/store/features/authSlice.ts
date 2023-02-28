@@ -52,7 +52,7 @@ export const fetchUser = createAsyncThunk("auth/user/fetch", async () => {
 });
 
 export const AuthSlice = createSlice({
-  name: "User",
+  name: "User", 
   initialState,
   reducers: {},
   extraReducers: (builder) => {
