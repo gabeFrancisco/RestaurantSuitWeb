@@ -8,7 +8,7 @@ export default function Sidebar() {
     <aside>
       <ul>
         <li>
-          <Link to="home"><i className="fas fa-chart-pie fa-fw"></i>Painel</Link>
+          <Link to="dashboard"><i className="fas fa-chart-pie fa-fw"></i>Painel</Link>
         </li>
         <li>
           <Link to="categories"><i className="fas fa-tag fa-fw"></i>Categorias</Link>

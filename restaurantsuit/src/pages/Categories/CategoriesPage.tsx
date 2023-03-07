@@ -1,8 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import CategoryTable from "../../components/CategoryTable/CategoryTable";
-import SectionTitle from "../../Widgets/SectionTitle/SectionTitle";
+import SectionTitle from "../../widgets/SectionTitle/SectionTitle";
 
 export default function CategoriesPage() {
+  const navigate = useNavigate();
   return (
     <div className="CategoriesPage PageFade">
       <SectionTitle
@@ -11,9 +13,16 @@ export default function CategoriesPage() {
       />
 
       <div>
-        <button className="btn btn-success"><i className="fas fa-plus  fa-fw"></i>Nova categoria</button>
+        <button
+          className="btn btn-success"
+          onClick={() => {
+            navigate("/newCategory")
+          }}
+        > 
+          <i className="fas fa-plus  fa-fw"></i>Nova categoria
+        </button>
       </div>
-      <CategoryTable/>
+      <CategoryTable />
     </div>
   );
 }

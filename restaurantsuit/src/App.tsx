@@ -1,7 +1,12 @@
-import { BrowserRouter, Route, Routes, useLocation, useNavigate } from "react-router-dom";
-// import { useAppDispatch } from "./store/store";
-// import { useEffect } from "react";
-// import { fetchUser } from "./store/features/authSlice";
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+} from "react-router-dom";
+
+import { useAppDispatch } from "./store/store";
+import { useEffect } from "react";
+import { fetchUser } from "./store/features/authSlice";
 
 import LoginPage from "./pages/Login/LoginPage";
 import UserPage from "./pages/User/UserPage";
@@ -10,11 +15,8 @@ import CategoriesPage from "./pages/Categories/CategoriesPage";
 import NotFoundPage from "./pages/NotFound/NotFoundPage";
 import Dashboard from "./pages/Dashboard/Dashboard";
 
-import { fetchUser } from "./store/features/authSlice";
-import { useAppDispatch } from "./store/store";
-import { useEffect } from "react";
-
 import "./App.css";
+import NewCategoryPage from "./pages/Categories/NewCategoryPage";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -30,9 +32,10 @@ function App() {
           <Route element={<PrivateRoutes />}>
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="user" element={<UserPage />} />
-            <Route path="categories" element={<CategoriesPage/>}/>
+            <Route path="categories" element={<CategoriesPage />} />
+            <Route path="newCategory" element={<NewCategoryPage/>}/>
           </Route>
-          <Route path="*" element={<NotFoundPage/>} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
     </BrowserRouter>

@@ -27,7 +27,6 @@ const initialState: AuthState = {
   message: "",
   token: "",
 };
-
 export const fetchLogin = createAsyncThunk(
   "auth/login/fetch",
   async (data: {}, thunkAPI) => {

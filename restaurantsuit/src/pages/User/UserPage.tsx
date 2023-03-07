@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import SectionTitle from '../../Widgets/SectionTitle/SectionTitle'
+import SectionTitle from '../../widgets/SectionTitle/SectionTitle'
 import { useAppSelector } from '../../store/store'
 
 export default function UserPage(){
