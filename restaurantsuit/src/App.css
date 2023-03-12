@@ -40,6 +40,7 @@ h1, h2, h3, h4, h5, h6{
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #4e96de;
+  border-radius: 5px;
 }
 
 /* Handle on hover */
@@ -154,6 +155,18 @@ button:hover{
 
 i{
   margin-right: 0.7rem;
+}
+
+.m-1{
+  margin: 0.3rem;
+}
+
+.m-2{
+  margin: 0.7rem;
+}
+
+.m-3{
+  margin: 1.3rem;
 }
 
 

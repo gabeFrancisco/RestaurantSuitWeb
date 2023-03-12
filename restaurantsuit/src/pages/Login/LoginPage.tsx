@@ -29,7 +29,7 @@ export default function LoginPage() {
 
   return (
     <div className="LoginPage">
-      <div className="FormArea">
+      <div className="FormArea">  
         <h1>Seja bem-vindo!</h1>
         <form onSubmit={formik.handleSubmit}>
           <div className="Form">

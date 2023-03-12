@@ -1,8 +1,4 @@
-import {
-  BrowserRouter,
-  Route,
-  Routes,
-} from "react-router-dom";
+import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 
 import { useAppDispatch } from "./store/store";
 import { useEffect } from "react";
@@ -16,10 +12,10 @@ import NotFoundPage from "./pages/NotFound/NotFoundPage";
 import Dashboard from "./pages/Dashboard/Dashboard";
 
 import "./App.css";
-import NewCategoryPage from "./pages/Categories/NewCategoryPage";
 
 function App() {
   const dispatch = useAppDispatch();
+
   useEffect(() => {
     dispatch(fetchUser());
   }, []);
@@ -33,7 +29,6 @@ function App() {
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="user" element={<UserPage />} />
             <Route path="categories" element={<CategoriesPage />} />
-            <Route path="newCategory" element={<NewCategoryPage/>}/>
           </Route>
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

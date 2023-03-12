@@ -15,7 +15,7 @@ export default function PrivateRoutes() {
 
   useEffect(() => {
     if(auth){
-      dispatch(fetchUser())    
+      dispatch(fetchUser())
     }
   },[])
   return auth ? (
