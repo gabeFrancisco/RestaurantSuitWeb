@@ -29,7 +29,7 @@ const initialState: AuthState = {
 };
 export const fetchLogin = createAsyncThunk(
   "auth/login/fetch",
-  async (data: {}, thunkAPI) => {
+  async (data: {}) => {
     const response = (await axios
       .post(`https://localhost:5001/api/users/login`, data)
       .then((res) => res.data)) as AuthState;

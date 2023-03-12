@@ -23,12 +23,28 @@ export const fetchAllCategories = createAsyncThunk(
   "category/fetchAll",
   async () => {
     const response = await apiService
-      .get("/categories")
-      .then((res) => res.data);
+      .get('/categories')
+      .then(res => res.data);
 
     return response;
   }
 );
+
+export const addCategory = createAsyncThunk(
+  "category/add",
+  async (data: {}, thunk) => {
+    const response = await apiService
+      .post('/categories', data)
+      .then(res => {
+        if(res.status === 200){
+          thunk.dispatch(fetchAllCategories())
+          return res.data
+        }
+      }) as Category;
+
+    return response;
+  }
+)
 
 export const CategoriesSlice = createSlice({
   name: "Category",
@@ -38,6 +54,9 @@ export const CategoriesSlice = createSlice({
     builder.addCase(fetchAllCategories.fulfilled, (state, action) => {
       state.categoryList = action.payload;
     });
+    // builder.addCase(addCategory.fulfilled, (state, action) => {
+    //   state
+    // })
   },
 });
 
