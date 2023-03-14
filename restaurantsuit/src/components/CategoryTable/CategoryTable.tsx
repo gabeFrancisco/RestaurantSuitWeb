@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import CategoryRemovalModal from "../../modals/CategoryRemovalModal";
 import { fetchAllCategories } from "../../store/features/categoriesSlice";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 
@@ -11,6 +12,9 @@ export default function CategoryTable() {
   useEffect(() => {
     dispatch(fetchAllCategories());
   }, [])
+
+  const [categoryRemovalModal, setCategoryRemovalModal] = useState(false)
+  const closeCategoryRemovalModal = () => setCategoryRemovalModal(false)
 
   return (
     <div className="CategoryTable">
@@ -37,8 +41,9 @@ export default function CategoryTable() {
                 </td>
                 <td>5</td>
                 <td className="button-area">
-                  <button className="btn-sm btn-warning">Editar</button>
-                  <button className="btn-sm btn-danger">Apagar</button>
+                  {categoryRemovalModal? <CategoryRemovalModal closeHandler={closeCategoryRemovalModal}/> : null}
+                  <button className="btn-sm btn-warning" >Editar</button>
+                  <button className="btn-sm btn-danger" onClick={() => setCategoryRemovalModal(true)}>Apagar</button>
                 </td>
               </tr>
             );
