@@ -17,7 +17,7 @@ export default function CategoriesPage() {
 
       <div>
         <button
-          className="btn btn-success"
+          className="btn btn-primary"
           onClick={() => setCategoryBox(true)}
         >
           <i className="fas fa-plus  fa-fw"></i>Nova categoria

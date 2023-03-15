@@ -46,6 +46,21 @@ export const addCategory = createAsyncThunk(
   }
 )
 
+export const removeCategory = createAsyncThunk(
+  "category/remove",
+  async (data: number, thunk) => {
+    const response = await apiService
+      .delete(`/categories/${data}`)
+      .then(res => {
+        if(res.status === 200){
+          thunk.dispatch(fetchAllCategories())
+        }
+      })
+
+      return response
+  }
+)
+
 export const CategoriesSlice = createSlice({
   name: "Category",
   initialState,

@@ -41,7 +41,7 @@ export default function CategoryTable() {
                 </td>
                 <td>5</td>
                 <td className="button-area">
-                  {categoryRemovalModal? <CategoryRemovalModal closeHandler={closeCategoryRemovalModal}/> : null}
+                  {categoryRemovalModal? <CategoryRemovalModal categoryId={cat.id} closeHandler={closeCategoryRemovalModal}/> : null}
                   <button className="btn-sm btn-warning" >Editar</button>
                   <button className="btn-sm btn-danger" onClick={() => setCategoryRemovalModal(true)}>Apagar</button>
                 </td>
