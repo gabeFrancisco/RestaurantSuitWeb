@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import CategoryRemovalModal from "../../modals/CategoryRemovalModal";
+import CategoryField from "../../Fields/CategoryField/CategoryField";
+import CategoryRemovalModal from "../../modals/CategoryRemovalModal/CategoryRemovalModal";
 import { fetchAllCategories } from "../../store/features/categoriesSlice";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 
@@ -11,10 +12,7 @@ export default function CategoryTable() {
 
   useEffect(() => {
     dispatch(fetchAllCategories());
-  }, [])
-
-  const [categoryRemovalModal, setCategoryRemovalModal] = useState(false)
-  const closeCategoryRemovalModal = () => setCategoryRemovalModal(false)
+  }, []);
 
   return (
     <div className="CategoryTable">
@@ -28,26 +26,14 @@ export default function CategoryTable() {
           </tr>
         </thead>
         <tbody>
-          {categories.map((cat) => {
-            return (
-              <tr>
-                <td>{cat.name}</td>
-                <td className="Category-Color-Wrapper">
-                  <div className="Category-Color"
-                    style={{
-                      backgroundColor: cat.color
-                    }}
-                  ></div>
-                </td>
-                <td>5</td>
-                <td className="button-area">
-                  {categoryRemovalModal? <CategoryRemovalModal categoryId={cat.id} closeHandler={closeCategoryRemovalModal}/> : null}
-                  <button className="btn-sm btn-warning" >Editar</button>
-                  <button className="btn-sm btn-danger" onClick={() => setCategoryRemovalModal(true)}>Apagar</button>
-                </td>
-              </tr>
-            );
-          })}
+          {categories.map((cat) => (
+            <CategoryField
+              id={cat.id}
+              categoryName={cat.name}
+              color={cat.color}
+              productsQty={7}
+            />
+          ))}
         </tbody>
       </table>
     </div>

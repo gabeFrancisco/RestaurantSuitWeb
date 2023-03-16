@@ -1,6 +1,6 @@
 import Modal from "react-modal";
-import { removeCategory } from "../store/features/categoriesSlice";
-import { useAppDispatch } from "../store/store";
+import { removeCategory } from "../../store/features/categoriesSlice";
+import { useAppDispatch } from "../../store/store";
 
 import "./CategoryRemovalModal.css";
 
@@ -20,8 +20,7 @@ export default function CategoryRemovalModal(props: Props) {
             margin: "15vh auto",
             height: "8rem",
             width: "20rem",
-          },
-          overlay: {},
+          }
         }}
       >
         <h3>Are you sure you want to remove this category?</h3>
