@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import CategoryField from "../../Fields/CategoryField/CategoryField";
-import CategoryRemovalModal from "../../modals/CategoryRemovalModal/CategoryRemovalModal";
+import CategoryRow from "../../TableRows/CategoryRow/CategoryRow";
 import { fetchAllCategories } from "../../store/features/categoriesSlice";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 
@@ -27,7 +26,7 @@ export default function CategoryTable() {
         </thead>
         <tbody>
           {categories.map((cat) => (
-            <CategoryField
+            <CategoryRow
               id={cat.id}
               categoryName={cat.name}
               color={cat.color}

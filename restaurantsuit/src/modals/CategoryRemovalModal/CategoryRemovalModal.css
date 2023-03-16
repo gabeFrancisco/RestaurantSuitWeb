@@ -1,3 +1,10 @@
+/* .Subtitle{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+} */
+
 .Button-Area{
   margin: 1.2rem;
   display: flex;

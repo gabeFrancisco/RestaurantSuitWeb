@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import CategoryRemovalModal from "../../modals/CategoryRemovalModal/CategoryRemovalModal";
 
-import "./CategoryField.css";
+import "./CategoryRow.css";
 
 interface Props {
   id: number,
@@ -10,7 +10,7 @@ interface Props {
   productsQty: number;
 }
 
-export default function CategoryField(props: Props) {
+export default function CategoryRow(props: Props) {
   const [categoryRemovalModal, setCategoryRemovalModal] = useState(false)
   const closeCategoryRemovalModal = () => setCategoryRemovalModal(false)
   
@@ -30,6 +30,7 @@ export default function CategoryField(props: Props) {
         {categoryRemovalModal ? (
           <CategoryRemovalModal
             categoryId={props.id}
+            categoryName={props.categoryName}
             closeHandler={closeCategoryRemovalModal}
           />
         ) : null}

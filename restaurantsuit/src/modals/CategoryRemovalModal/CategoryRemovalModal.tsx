@@ -5,7 +5,8 @@ import { useAppDispatch } from "../../store/store";
 import "./CategoryRemovalModal.css";
 
 interface Props {
-  categoryId: number;
+  categoryId: number,
+  categoryName: string,
   closeHandler: () => void;
 }
 
@@ -19,11 +20,14 @@ export default function CategoryRemovalModal(props: Props) {
           content: {
             margin: "15vh auto",
             height: "8rem",
-            width: "20rem",
+            width: "25rem",
           }
         }}
       >
-        <h3>Are you sure you want to remove this category?</h3>
+        {/* <h3>Are you sure you want to remove this category?</h3> */}
+        
+          <h3>Você tem certeza que deseja remover a categoria <b>{props.categoryName}</b>?</h3>
+
         <div className="Button-Area">
           <button className="btn-primary" onClick={() => props.closeHandler()}>
             Cancel
