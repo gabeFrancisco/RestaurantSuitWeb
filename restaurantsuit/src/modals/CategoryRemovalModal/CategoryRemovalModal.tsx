@@ -30,7 +30,7 @@ export default function CategoryRemovalModal(props: Props) {
 
         <div className="Button-Area">
           <button className="btn-primary" onClick={() => props.closeHandler()}>
-            Cancel
+            Cancelar
           </button>
           <button
             className="btn-danger"
@@ -39,7 +39,7 @@ export default function CategoryRemovalModal(props: Props) {
               props.closeHandler()
             }}
           >
-            Remove!
+            Remover!
           </button>
         </div>
       </Modal>

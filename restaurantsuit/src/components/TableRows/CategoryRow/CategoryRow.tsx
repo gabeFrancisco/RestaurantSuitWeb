@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CategoryRemovalModal from "../../modals/CategoryRemovalModal/CategoryRemovalModal";
+import CategoryRemovalModal from "../../../modals/CategoryRemovalModal/CategoryRemovalModal";
 
 import "./CategoryRow.css";
 

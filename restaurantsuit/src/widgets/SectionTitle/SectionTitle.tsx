@@ -4,7 +4,7 @@ import './SectionTitle.css'
 
 interface Props{
   title: string,
-  subtitle: string
+  subtitle?: string
 }
 
 export default function SectionTitle(props: Props){
