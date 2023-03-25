@@ -1,7 +1,11 @@
 import { useFormik } from "formik";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CategoryRemovalModal from "../../../modals/CategoryRemovalModal/CategoryRemovalModal";
-import { updateCategory } from "../../../store/features/categoriesSlice";
+import apiService from "../../../services/apiService";
+import {
+  getProductsCountByCategory,
+  updateCategory,
+} from "../../../store/features/categoriesSlice";
 import { useAppDispatch } from "../../../store/store";
 
 import "./CategoryRow.css";
@@ -16,8 +20,18 @@ interface Props {
 export default function CategoryRow(props: Props) {
   const [categoryRemovalModal, setCategoryRemovalModal] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
+  const [productsCount, setProductsCount] = useState(0);
   const closeCategoryRemovalModal = () => setCategoryRemovalModal(false);
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    apiService
+    .get(`categories/productsCount/${props.id}`)
+    .then(res => {
+      const count = res.data;
+      setProductsCount(count)
+    })
+  }, [])
 
   const formik = useFormik({
     initialValues: {
@@ -26,50 +40,56 @@ export default function CategoryRow(props: Props) {
       color: props.color,
     },
     onSubmit: (values) => {
-      dispatch(updateCategory(values))
-      setIsEdit(false)
+      dispatch(updateCategory(values));
+      setIsEdit(false);
     },
   });
 
   return (
-    <>  
-      {isEdit ?
-      //Edit mode
-      (
-        <tr>
-        <td>
-          <input
-            type="text"
-            placeholder="Nome da categoria"
-            id="name"
-            name="name"
-            className="m-2"
-            onChange={formik.handleChange}
-            value={formik.values.name}
-          />
-        </td>
-        <td className="Category-Color-Wrapper">
-          <input
-            type="color"
-            placeholder="Cor"
-            id="color"
-            name="color"
-            onChange={formik.handleChange}
-            value={formik.values.color}
-          />
-        </td>
-        <td>&nbsp;</td>
-        <td className="button-area">
-          <button className="btn-sm btn-primary" type="button" onClick={() => formik.handleSubmit()}>Concluir!</button>
-          <button className="btn-sm btn-danger" onClick={() => setIsEdit(false)}>
-            Cancelar
-          </button>
-        </td>
-      </tr>
-      ) : 
-      
-      // Normal mode
-      (
+    <>
+      {isEdit ? (
+        //Edit mode
+        <tr className="PageFade">
+          <td>
+            <input
+              type="text"
+              placeholder="Nome da categoria"
+              id="name"
+              name="name"
+              className="m-2"
+              onChange={formik.handleChange}
+              value={formik.values.name}
+            />
+          </td>
+          <td className="Category-Color-Wrapper">
+            <input
+              type="color"
+              placeholder="Cor"
+              id="color"
+              name="color"
+              onChange={formik.handleChange}
+              value={formik.values.color}
+            />
+          </td>
+          <td>&nbsp;</td>
+          <td className="button-area">
+            <button
+              className="btn-sm btn-primary"
+              type="button"
+              onClick={() => formik.handleSubmit()}
+            >
+              Concluir!
+            </button>
+            <button
+              className="btn-sm btn-danger"
+              onClick={() => setIsEdit(false)}
+            >
+              Cancelar
+            </button>
+          </td>
+        </tr>
+      ) : (
+        // Normal mode
         <tr>
           <td>{props.categoryName}</td>
           <td className="Category-Color-Wrapper">
@@ -80,7 +100,7 @@ export default function CategoryRow(props: Props) {
               }}
             ></div>
           </td>
-          <td>5</td>
+          <td>{productsCount}</td>
           <td className="button-area">
             {categoryRemovalModal ? (
               <CategoryRemovalModal
@@ -89,7 +109,12 @@ export default function CategoryRow(props: Props) {
                 closeHandler={closeCategoryRemovalModal}
               />
             ) : null}
-            <button className="btn-sm btn-warning" onClick={() => setIsEdit(true)}>Editar</button>
+            <button
+              className="btn-sm btn-warning"
+              onClick={() => setIsEdit(true)}
+            >
+              Editar
+            </button>
             <button
               className="btn-sm btn-danger"
               onClick={() => setCategoryRemovalModal(true)}

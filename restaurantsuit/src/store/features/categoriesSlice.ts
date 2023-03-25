@@ -67,7 +67,16 @@ export const removeCategory = createAsyncThunk(
           thunk.dispatch(fetchAllCategories());
         }
       });
+    return response;
+  }
+);
 
+export const getProductsCountByCategory = createAsyncThunk(
+  "category/productsCount",
+  async (data: number) => {
+    const response = await apiService
+      .get(`categories/productsCount/${data}`)
+      .then((res) => res.data);
     return response;
   }
 );
