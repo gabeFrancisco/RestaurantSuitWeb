@@ -23,8 +23,8 @@ export const fetchAllCategories = createAsyncThunk(
   "category/fetchAll",
   async () => {
     const response = await apiService
-      .get('/categories')
-      .then(res => res.data);
+      .get("/categories")
+      .then((res) => res.data);
 
     return response;
   }
@@ -33,33 +33,44 @@ export const fetchAllCategories = createAsyncThunk(
 export const addCategory = createAsyncThunk(
   "category/add",
   async (data: {}, thunk) => {
-    const response = await apiService
-      .post('/categories', data)
-      .then(res => {
-        if(res.status === 200){
-          thunk.dispatch(fetchAllCategories())
-          return res.data
-        }
-      }) as Category;
+    const response = (await apiService.post("/categories", data).then((res) => {
+      if (res.status === 200) {
+        thunk.dispatch(fetchAllCategories());
+        return res.data;
+      }
+    })) as Category;
 
     return response;
   }
-)
+);
+
+export const updateCategory = createAsyncThunk(
+  "category/update",
+  async (data: {}, thunk) => {
+    const response = (await apiService.put("/categories", data).then((res) => {
+      if (res.status === 200) {
+        thunk.dispatch(fetchAllCategories());
+        return res.data;
+      }
+    })) as Category;
+    return response;
+  }
+);
 
 export const removeCategory = createAsyncThunk(
   "category/remove",
   async (data: number, thunk) => {
     const response = await apiService
       .delete(`/categories/${data}`)
-      .then(res => {
-        if(res.status === 200){
-          thunk.dispatch(fetchAllCategories())
+      .then((res) => {
+        if (res.status === 200) {
+          thunk.dispatch(fetchAllCategories());
         }
-      })
+      });
 
-      return response
+    return response;
   }
-)
+);
 
 export const CategoriesSlice = createSlice({
   name: "Category",
