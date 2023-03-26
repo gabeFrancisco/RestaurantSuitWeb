@@ -12,6 +12,8 @@ import NotFoundPage from "./pages/NotFound/NotFoundPage";
 import Dashboard from "./pages/Dashboard/Dashboard";
 
 import "./App.css";
+import ProductPage from "./pages/Products/ProductPage/ProductsPage";
+import NewProductPage from "./pages/Products/NewProduct/NewProductPage";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -29,6 +31,8 @@ function App() {
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="user" element={<UserPage />} />
             <Route path="categories" element={<CategoriesPage />} />
+            <Route path="products" element={<ProductPage />} />
+            <Route path="newProduct" element={<NewProductPage />} />
           </Route>
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

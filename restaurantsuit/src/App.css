@@ -162,6 +162,7 @@ button:hover {
 
 i {
   margin-right: 0.7rem;
+  margin-left: 0.3rem;
 }
 
 .m-1 {
@@ -174,4 +175,27 @@ i {
 
 .m-3 {
   margin: 1.3rem;
+}
+
+.Table-Area {
+  display: flex;
+  flex-direction: column;
+}
+
+.Table-Area table {
+  border-collapse: collapse;
+  margin: 1rem 1rem 1rem 3rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  border-radius: 5px;
+}
+
+.Table-Area table thead tr {
+  background-color: var(--primary);
+  color: #fff;
+  text-align: left;
+}
+
+.Table-Area table th,
+.Table-Area table td {
+  padding: 0.3rem 2rem 0.3rem 1rem;
 }

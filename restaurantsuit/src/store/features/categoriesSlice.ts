@@ -89,9 +89,6 @@ export const CategoriesSlice = createSlice({
     builder.addCase(fetchAllCategories.fulfilled, (state, action) => {
       state.categoryList = action.payload;
     });
-    // builder.addCase(addCategory.fulfilled, (state, action) => {
-    //   state
-    // })
   },
 });
 

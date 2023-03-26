@@ -14,7 +14,7 @@ export default function CategoryTable() {
   }, []);
 
   return (
-    <div className="CategoryTable">
+    <div className="Table-Area">
       <table>
         <thead>
           <tr>
