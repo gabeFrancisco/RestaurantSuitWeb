@@ -12,7 +12,6 @@ const initialState: CategoryState = {
     id: 0,
     name: "",
     color: "#ffffff",
-    workGroupId: -1,
     createdAt: "",
     updatedAt: "",
   },
@@ -82,7 +81,7 @@ export const getProductsCountByCategory = createAsyncThunk(
 );
 
 export const CategoriesSlice = createSlice({
-  name: "Category",
+  name: "Categories",
   initialState,
   reducers: {},
   extraReducers: (builder) => {

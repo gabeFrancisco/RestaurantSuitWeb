@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { fetchAllProducts } from "../../store/features/productsSlice";
+import { useAppDispatch, useAppSelector } from "../../store/store";
 import ProductRow from "../TableRows/ProductRow/ProductRow";
 
 export default function ProductTable() {
+  const products = useAppSelector((state) => state.products.productList);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAllProducts());
+  }, []);
+
   return (
     <div className="Table-Area">
       <table>
@@ -15,7 +24,16 @@ export default function ProductTable() {
           </tr>
         </thead>
         <tbody>
-          <ProductRow id={7} categoryId={12} categoryName="Heaven" productName="Some good food!" quantity={3} price={98.99}/>
+          {products.map((product) => (
+            <ProductRow
+              id={product.id}
+              productName={product.name}
+              categoryName={product.categoryName}
+              categoryId={product.categoryId}
+              quantity={product.quantity}
+              price={product.price}
+            />
+          ))}
         </tbody>
       </table>
     </div>
