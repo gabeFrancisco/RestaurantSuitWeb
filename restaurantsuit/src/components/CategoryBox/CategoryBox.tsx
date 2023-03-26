@@ -3,7 +3,8 @@ import React from "react";
 import { addCategory } from "../../store/features/categoriesSlice";
 import { useAppDispatch } from "../../store/store";
 import Card from "../../widgets/Card/Card";
-import Row, { AlignItems, JustifyContent } from "../../widgets/Row/Row";
+import { AlignItems, JustifyContent } from "../../widgets/FlexProperties/FlexProperties";
+import Row from "../../widgets/Row/Row";
 
 import "./CategoryBox.css";
 

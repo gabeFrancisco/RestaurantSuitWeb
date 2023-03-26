@@ -2,9 +2,15 @@ import { useFormik } from "formik";
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchAllCategories } from "../../../store/features/categoriesSlice";
+import { addProduct } from "../../../store/features/productsSlice";
 import { useAppDispatch, useAppSelector } from "../../../store/store";
 import Card from "../../../widgets/Card/Card";
-import Row, { AlignItems, JustifyContent } from "../../../widgets/Row/Row";
+import Column from "../../../widgets/Column/Column";
+import {
+  AlignItems,
+  JustifyContent,
+} from "../../../widgets/FlexProperties/FlexProperties";
+import Row from "../../../widgets/Row/Row";
 import SectionTitle from "../../../widgets/SectionTitle/SectionTitle";
 
 export default function NewProductPage() {
@@ -18,13 +24,13 @@ export default function NewProductPage() {
 
   const formik = useFormik({
     initialValues: {
-      productName: "",
-      category: categories.length > 0 ? categories[0].id : 0,
+      name: "",
+      categoryId: categories.length > 0 ? categories[0].id : 0,
       quantity: null,
       price: 0,
     },
     onSubmit: (values) => {
-      console.log(values);
+      dispatch(addProduct(values))
     },
   });
 
@@ -33,52 +39,64 @@ export default function NewProductPage() {
       <SectionTitle title="Novo produto" />
       <Card>
         <div className="ProductForm">
-          <Row
-            alignItems={AlignItems.Baseline}
-            justifyContent={JustifyContent.SpaceBetween}
+          <Column
+            alignItems={AlignItems.Stretch}
+            justifyContent={JustifyContent.Center}
           >
-            <label htmlFor="">Nome do produto</label>
-            <input
-              type="text"
-              id="productName"
-              name="productName"
-              placeholder="Nome"
-              className="m-2"
-              onChange={formik.handleChange}
-              value={formik.values.productName}
-            />
-            <label htmlFor="">Categoria</label>
-            <select
-              className="m-2"
-              style={{ appearance: "menulist" }}
-              name="category"
-              value={formik.values.category}
-              onChange={formik.handleChange}
+            <Row
+              alignItems={AlignItems.Baseline}
+              justifyContent={JustifyContent.Left}
             >
-              {categories ? (
-                categories.map((cat) => {
-                  return <option value={cat.id}>{cat.name}</option>;
-                })
-              ) : (
-                <option>Nenhuma</option>
-              )}
-            </select>
-            <label htmlFor="">Quantidade</label>
-            <input
-              min={1}
-              type="number"
-              id="quantity"
-              name="quantity"
-              placeholder="Quantidade"
-              className="m-2"
-              onChange={formik.handleChange}
-              // value={formik.values.quantity}
-            />
-          </Row>
-          <Row
+              <label htmlFor="">Nome do produto</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Nome"
+                className="m-2"
+                onChange={formik.handleChange}
+                value={formik.values.name}
+              />
+            </Row>
+            <Row
+              alignItems={AlignItems.Baseline}
+              justifyContent={JustifyContent.Left}
+            >
+              <label htmlFor="">Categoria</label>
+              <select
+                className="m-2"
+                style={{ appearance: "menulist" }}
+                name="categoryId"
+                value={formik.values.categoryId}
+                onChange={formik.handleChange}
+              >
+                {categories ? (
+                  categories.map((cat) => {
+                    return <option value={+cat.id}>{cat.name}</option>;
+                  })
+                ) : (
+                  <option>Nenhuma</option>
+                )}
+              </select>
+            </Row>
+          </Column>
+          <Column
             alignItems={AlignItems.Baseline}
-            justifyContent={JustifyContent.SpaceBetween}
+            justifyContent={JustifyContent.Center}
           >
+            <div>
+              <label htmlFor="">Quantidade</label>
+              <input
+                min={1}
+                type="number"
+                id="quantity"
+                name="quantity"
+                placeholder="Quantidade"
+                className="m-2"
+                onChange={formik.handleChange}
+                // value={formik.values.quantity}
+              />
+            </div>
             <div>
               <label htmlFor="">Preço</label>
               <input
@@ -92,7 +110,7 @@ export default function NewProductPage() {
                 // value={formik.values.quantity}
               />
             </div>
-          </Row>
+          </Column>
         </div>
       </Card>
       <Row

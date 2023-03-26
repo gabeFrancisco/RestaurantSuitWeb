@@ -10,7 +10,7 @@ interface ProductState {
 const initialState: ProductState = {
   product: {
     id: -1,
-    name: "",
+    name: "", 
     categoryId: -1,
 		categoryName: "",
     quantity: 0,
@@ -29,6 +29,19 @@ export const fetchAllProducts = createAsyncThunk(
     return response;
   }
 );
+
+export const addProduct = createAsyncThunk(
+	"products/add",
+	async (data: {}, thunkAPI) => {
+		const response = await apiService.post("/products", data).then(res => {
+			if(res.status === 200){
+				thunkAPI.dispatch(fetchAllProducts)
+				return res.data
+			}
+		})
+		return response;
+	}
+)
 
 export const ProductsSlice = createSlice({
   name: "Products",

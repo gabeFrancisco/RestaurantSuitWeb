@@ -1,19 +1,18 @@
-import { CSSProperties } from "react";
+import React, { CSSProperties } from "react";
 import { AlignItems, JustifyContent } from "../FlexProperties/FlexProperties";
-import "./Row.css";
 
 interface Props {
   margin?: number;
   padding?: number;
   justifyContent: JustifyContent;
   alignItems: AlignItems;
-  children?: JSX.Element | JSX.Element[]
+  children?: JSX.Element | JSX.Element[];
 }
 
-export default function Row(props: Props) {
+export default function Column(props: Props) {
   const styles: CSSProperties = {
     display: "flex",
-    flexDirection: "row",
+    flexDirection: "column",
     alignItems: props.alignItems,
     justifyContent: props.justifyContent,
     margin: `${props.margin}rem`,
