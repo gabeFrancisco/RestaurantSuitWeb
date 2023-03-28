@@ -32,7 +32,6 @@ export default function NewProductPage() {
     onSubmit: (values) => {
       dispatch(addProduct(values))
         .then(() => navigate("/products"))
-        .catch(() => null)
     },
   });
 

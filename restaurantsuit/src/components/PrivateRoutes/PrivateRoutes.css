@@ -1,6 +1,7 @@
 .App-Area{
   display: flex;
   flex-direction: row;
+  background-color: #fafafa;
 }
 
 .App-Area .Pages-Area{
