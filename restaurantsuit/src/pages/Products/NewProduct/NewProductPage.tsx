@@ -31,6 +31,8 @@ export default function NewProductPage() {
     },
     onSubmit: (values) => {
       dispatch(addProduct(values))
+        .then(() => navigate("/products"))
+        .catch(() => null)
     },
   });
 
@@ -117,7 +119,10 @@ export default function NewProductPage() {
         alignItems={AlignItems.Baseline}
         justifyContent={JustifyContent.Center}
       >
-        <button className="btn btn-danger" onClick={() => navigate(-1)}>
+        <button
+          className="btn btn-danger"
+          onClick={() => navigate("/products")}
+        >
           Cancelar
         </button>
         <button
