@@ -15,7 +15,7 @@ export default function ProductRow(props: Props) {
       <td>{props.productName}</td>
       <td>{props.categoryName}</td>
       <td>{props.quantity}</td>
-      <td>R${props.price}</td>
+      <td>R${props.price.toFixed(2)}</td>
       <td>
         <button className="btn-sm btn-secondary">
           Ações <i className="fa-solid fa-caret-down"></i>
