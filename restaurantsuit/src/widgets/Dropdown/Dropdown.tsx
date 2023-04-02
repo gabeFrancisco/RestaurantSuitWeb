@@ -1,4 +1,5 @@
 import React, { Children, useState } from "react";
+import useOutsideClick from "../../hooks/useOutsideClick";
 
 import "./Dropdown.css";
 
@@ -9,19 +10,7 @@ interface Props {
 
 export default function Dropdown(props: Props) {
   const [isDrop, setIsDrop] = useState(false);
-
-  // window.addEventListener("click", (e) => {
-  //   if (
-  //     document
-  //       .getElementById("dropbox")
-  //       ?.contains(e.target as HTMLBodyElement)
-  //   ) {
-  //     setIsDrop(true)
-  //   }
-  //   else{
-  //     setIsDrop(false)
-  //   }
-  // });
+  const ref = useOutsideClick(setIsDrop);
 
   return (
     <div className="Dropdown">
@@ -33,9 +22,11 @@ export default function Dropdown(props: Props) {
         {props.buttonText} <i className="fa-solid fa-caret-down"></i>
       </button>
       {isDrop ? (
-        <ul className="PageFade" id="dropbox">
-          {React.Children.map(props.children, (child) => child)}
-        </ul>
+        <div ref={ref}>
+          <ul className="PageFade" id="dropbox">
+            {React.Children.map(props.children, (child) => child)}
+          </ul>
+        </div>
       ) : null}
     </div>
   );
