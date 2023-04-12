@@ -47,6 +47,19 @@ export const addProduct = createAsyncThunk(
   }
 );
 
+export const updateProduct = createAsyncThunk(
+  "products/update",
+  async(data: {}, thunkAPI) => {
+    const response = await apiService.put("/products", data).then((res) => {
+      if(res.status === 200){
+        thunkAPI.dispatch(fetchAllProducts);
+        return res.data
+      }
+    })
+    return response;
+  }
+)
+
 export const ProductsSlice = createSlice({
   name: "Products",
   initialState,

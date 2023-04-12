@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Category } from "../../models/interfaces/Category";
 import { fetchAllCategories } from "../../store/features/categoriesSlice";
-import { addProduct } from "../../store/features/productsSlice";
+import { addProduct, updateProduct } from "../../store/features/productsSlice";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import Card from "../../widgets/Card/Card";
 import Column from "../../widgets/Column/Column";
@@ -27,8 +27,9 @@ export default function ProductForm(props: Props) {
   //This is used to handle a new product or
   //get actual data of an existing product to update
   let formProduct = {
+    id: 0,
     name: "",
-    categoryId: -1,
+    categoryId: categories[0].id,
     quantity: 0,
     price: 0.0,
   };
@@ -41,6 +42,7 @@ export default function ProductForm(props: Props) {
   if (props.isEdit) {
     product = useAppSelector((state) => state.products.product);
     formProduct = {
+      id: product.id,
       name: product.name,
       categoryId: product.categoryId,
       quantity: product.quantity,
@@ -56,7 +58,12 @@ export default function ProductForm(props: Props) {
   const formik = useFormik({
     initialValues: formProduct,
     onSubmit: (values) => {
-      dispatch(addProduct(values)).then(() => navigate("/products"));
+      if (props.isEdit) {
+        dispatch(updateProduct(values)).then(() => navigate("/products"));
+      }
+      else{
+        dispatch(addProduct(values)).then(() => navigate("/products"));
+      }
     },
   });
   return (
