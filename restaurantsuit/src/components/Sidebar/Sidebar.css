@@ -32,10 +32,10 @@ aside ul li a{
 aside ul li a:hover{
   background-color: var(--primaryDk);
   color: #fff;
-  border-radius: 10px;
+  border-radius: 5px;
   cursor: pointer;
   transition: ease background-color 0.3s;
   transition: padding 0.3s;
   padding: 0.7rem 0.7rem 0.7rem 4rem;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }

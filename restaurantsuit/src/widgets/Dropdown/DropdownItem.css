@@ -1,11 +1,12 @@
-li{
+.DropdownItem{
   list-style: none;
   padding: 0 0.8rem
 }
 
-li:hover{
+.DropdownItem:hover{
   background-color: var(--primaryGd);
   color: #fff;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 2px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }

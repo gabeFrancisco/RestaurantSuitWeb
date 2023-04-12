@@ -1,10 +1,10 @@
 import React, { SyntheticEvent, useEffect, useRef } from "react";
 
-export default function useOutsideClick(callback) {
+export default function useOutsideClick(callback: any) {
   const ref = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    const handleClick = (event) => {
+    const handleClick = (event: any) => {
       if (ref.current && !ref.current.contains(event.target)) {
         callback();
       }
