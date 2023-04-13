@@ -29,7 +29,7 @@ export default function ProductForm(props: Props) {
   let formProduct = {
     id: 0,
     name: "",
-    categoryId: categories[0].id,
+    categoryId: (categories.length >= 0 ? categories[0].id : 0),
     quantity: 0,
     price: 0.0,
   };

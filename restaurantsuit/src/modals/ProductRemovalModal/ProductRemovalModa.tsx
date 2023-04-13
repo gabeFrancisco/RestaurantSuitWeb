@@ -1,16 +1,17 @@
+import React from "react";
 import Modal from "react-modal";
-import { removeCategory } from "../../store/features/categoriesSlice";
-import { useAppDispatch } from "../../store/store";
 
 import "../ModalStyle.css";
+import { useAppDispatch } from "../../store/store";
+import { removeProduct } from "../../store/features/productsSlice";
 
 interface Props {
-  categoryId: number;
-  categoryName: string;
+  productId: number;
+  productName: string;
   closeHandler: () => void;
 }
 
-export default function CategoryRemovalModal(props: Props) {
+export default function ProductRemovalModal(props: Props) {
   const dispatch = useAppDispatch();
   return (
     <Modal
@@ -26,8 +27,8 @@ export default function CategoryRemovalModal(props: Props) {
       {/* <h3>Are you sure you want to remove this category?</h3> */}
 
       <h3>
-        Você tem certeza que deseja remover a categoria{" "}
-        <b>{props.categoryName}</b>?
+        Você tem certeza que deseja remover o produto <b>{props.productName}</b>
+        ?
       </h3>
 
       <div className="Button-Area">
@@ -37,7 +38,8 @@ export default function CategoryRemovalModal(props: Props) {
         <button
           className="btn-danger"
           onClick={() => {
-            dispatch(removeCategory(props.categoryId));
+            dispatch(removeProduct(props.productId));
+            console.log("clickeeeeed!")
             props.closeHandler();
           }}
         >

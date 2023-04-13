@@ -49,16 +49,30 @@ export const addProduct = createAsyncThunk(
 
 export const updateProduct = createAsyncThunk(
   "products/update",
-  async(data: {}, thunkAPI) => {
+  async (data: {}, thunkAPI) => {
     const response = await apiService.put("/products", data).then((res) => {
-      if(res.status === 200){
+      if (res.status === 200) {
         thunkAPI.dispatch(fetchAllProducts);
-        return res.data
+        return res.data;
       }
-    })
+    });
     return response;
   }
-)
+);
+
+export const removeProduct = createAsyncThunk(
+  "products/remove",
+  async (data: number, thunkAPI) => {
+    const response = await apiService
+      .delete(`/products/${data}`)
+      .then((res) => {
+        if (res.status === 200) {
+          thunkAPI.dispatch(fetchAllProducts());
+        }
+      });
+    return response;
+  }
+);
 
 export const ProductsSlice = createSlice({
   name: "Products",
@@ -70,8 +84,6 @@ export const ProductsSlice = createSlice({
           (product) => product.id === action.payload
         ) as Product
       );
-      // console.log(product);
-      // console.log(action);
     },
   },
   extraReducers: (builder) => {

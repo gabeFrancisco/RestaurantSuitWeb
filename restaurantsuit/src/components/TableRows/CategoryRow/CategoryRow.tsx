@@ -23,7 +23,7 @@ export default function CategoryRow(props: Props) {
   const [productsCount, setProductsCount] = useState(0);
   const closeCategoryRemovalModal = () => setCategoryRemovalModal(false);
   const dispatch = useAppDispatch();
-
+  
   useEffect(() => {
     apiService
     .get(`categories/productsCount/${props.id}`)
