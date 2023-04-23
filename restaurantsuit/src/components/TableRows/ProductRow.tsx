@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { setProduct } from "../../../store/features/productsSlice";
-import { useAppDispatch } from "../../../store/store";
-import Dropdown from "../../../widgets/Dropdown/Dropdown";
-import DropdownItem from "../../../widgets/Dropdown/DropdownItem";
-import ProductRemovalModal from "../../../modals/ProductRemovalModal/ProductRemovalModa";
+import { setProduct } from "../../store/features/productsSlice";
+import { useAppDispatch } from "../../store/store";
+import Dropdown from "../../widgets/Dropdown/Dropdown";
+import DropdownItem from "../../widgets/Dropdown/DropdownItem";
+import ProductRemovalModal from "../../modals/ProductRemovalModal/ProductRemovalModa";
 
 interface Props {
   id: number;

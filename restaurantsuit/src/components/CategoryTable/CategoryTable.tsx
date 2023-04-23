@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import CategoryRow from "../TableRows/CategoryRow/CategoryRow";
+import CategoryRow from "../TableRows/CategoryRow";
 import { fetchAllCategories } from "../../store/features/categoriesSlice";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 

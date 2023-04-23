@@ -20,7 +20,7 @@ export default function Sidebar() {
           <Link to="tables"><i className="fas fa-inbox fa-fw"></i>Mesas</Link>
         </li>
         <li>
-          <Link to="tables"><i className="fas fa-ticket fa-fw"></i>Pedidos</Link>
+          <Link to="orders"><i className="fas fa-ticket fa-fw"></i>Pedidos</Link>
         </li>
         <li>
           <Link to="workGroups"><i className="fas fa-briefcase fa-fw"></i>Grupos de Serviço</Link>

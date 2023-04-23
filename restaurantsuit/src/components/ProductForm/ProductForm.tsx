@@ -29,7 +29,7 @@ export default function ProductForm(props: Props) {
   let formProduct = {
     id: 0,
     name: "",
-    categoryId: (categories.length >= 0 ? categories[0].id : 0),
+    categoryId: categories[0] ? categories[0].id : 0,
     quantity: 0,
     price: 0.0,
   };
@@ -60,8 +60,7 @@ export default function ProductForm(props: Props) {
     onSubmit: (values) => {
       if (props.isEdit) {
         dispatch(updateProduct(values)).then(() => navigate("/products"));
-      }
-      else{
+      } else {
         dispatch(addProduct(values)).then(() => navigate("/products"));
       }
     },

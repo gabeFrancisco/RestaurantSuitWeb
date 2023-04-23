@@ -15,6 +15,7 @@ import "./App.css";
 import ProductPage from "./pages/Products/ProductPage/ProductsPage";
 import NewProductPage from "./pages/Products/NewProduct/NewProductPage";
 import UpdateProductPage from "./pages/Products/UpdateProduct/UpdateProductPage";
+import TablesPage from "./pages/Tables/TablesPage";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -35,6 +36,7 @@ function App() {
             <Route path="products" element={<ProductPage />} />
             <Route path="newProduct" element={<NewProductPage />} />
             <Route path="updateProduct" element={<UpdateProductPage/>}/>
+            <Route path="tables" element={<TablesPage/>}/>
           </Route>
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

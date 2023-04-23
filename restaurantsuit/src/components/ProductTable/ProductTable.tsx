@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { fetchAllProducts } from "../../store/features/productsSlice";
 import { useAppDispatch, useAppSelector } from "../../store/store";
-import ProductRow from "../TableRows/ProductRow/ProductRow";
+import ProductRow from "../TableRows/ProductRow";
 
 export default function ProductTable() {
   const products = useAppSelector((state) => state.products.productList);

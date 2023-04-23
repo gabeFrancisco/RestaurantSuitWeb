@@ -1,14 +1,12 @@
 import { useFormik } from "formik";
 import React, { useEffect, useState } from "react";
-import CategoryRemovalModal from "../../../modals/CategoryRemovalModal/CategoryRemovalModal";
-import apiService from "../../../services/apiService";
+import CategoryRemovalModal from "../../modals/CategoryRemovalModal/CategoryRemovalModal";
+import apiService from "../../services/apiService";
 import {
   getProductsCountByCategory,
   updateCategory,
-} from "../../../store/features/categoriesSlice";
-import { useAppDispatch } from "../../../store/store";
-
-import "./CategoryRow.css";
+} from "../../store/features/categoriesSlice";
+import { useAppDispatch } from "../../store/store";
 
 interface Props {
   id: number;
