@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { fetchAllProducts } from "../../store/features/productsSlice";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import ProductRow from "../TableRows/ProductRow";
+import { Loader } from "../../widgets/Loading/Loader";
+import Center from "../../widgets/Center/Center";
 
 export default function ProductTable() {
   const products = useAppSelector((state) => state.products.productList);
@@ -24,16 +26,20 @@ export default function ProductTable() {
           </tr>
         </thead>
         <tbody>
-          {products.map((product) => (
-            <ProductRow
-              id={product.id}
-              productName={product.name}
-              categoryName={product.categoryName}
-              categoryId={product.categoryId}
-              quantity={product.quantity}
-              price={product.price}
-            />
-          ))}
+          {products.length > 0 ? (
+            products.map((product) => (
+              <ProductRow
+                id={product.id}
+                productName={product.name}
+                categoryName={product.categoryName}
+                categoryId={product.categoryId}
+                quantity={product.quantity}
+                price={product.price}
+              />
+            ))
+          ) : (
+            <Loader />
+          )}
         </tbody>
       </table>
     </div>

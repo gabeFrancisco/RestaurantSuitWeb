@@ -4,6 +4,7 @@ import { fetchAllCategories } from "../../store/features/categoriesSlice";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 
 import "./CategoryTable.css";
+import { Loader } from "../../widgets/Loading/Loader";
 
 export default function CategoryTable() {
   const categories = useAppSelector((state) => state.categories.categoryList);
@@ -26,14 +27,16 @@ export default function CategoryTable() {
         </thead>
         <tbody>
           
-          {categories.map((cat) => (
+          {categories.length > 0 ? (categories.map((cat) => (
             <CategoryRow
               id={cat.id}
               categoryName={cat.name}
               color={cat.color}
               productsQty={7}
             />
-          ))}
+          ))) : (
+            <Loader/>
+          )}
         </tbody>
       </table>
     </div>

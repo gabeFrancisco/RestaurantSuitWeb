@@ -1,0 +1,15 @@
+.Loader{
+  border: 7px solid #d9d9d9c5; /* Light grey */
+  border-top: 7px solid var(--primary); /* Blue */
+  border-bottom: 7px solid var(--primary); /* Blue */
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  animation: spin 1.3s ease infinite;
+  margin: 3rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
