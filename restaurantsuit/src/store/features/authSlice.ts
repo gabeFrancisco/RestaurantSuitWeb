@@ -18,7 +18,7 @@ const initialState: AuthState = {
     token: "",
     name: "string;",
     email: "string;",
-    role: 0,
+    role: -1,
     lastUserWorkGroup: 0,
     createdAt: "string;",
     updatedAt: "string;",

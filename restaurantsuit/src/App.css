@@ -106,9 +106,14 @@ button {
   margin: 0 0.3rem
 }
 
-button:hover {
+button:hover:enabled {
   transform: scale(1.050);
   transition: transform 0.2s;
+}
+
+button:disabled{
+  color: #ccc;
+  background-color: #888;
 }
 
 .btn-sm {
@@ -120,7 +125,7 @@ button:hover {
   color: #ffffff;
 }
 
-.btn-primary:hover {
+.btn-primary:hover:enabled {
   background-color: #3a60a6;
 }
 
@@ -129,7 +134,7 @@ button:hover {
   color: #ffffff;
 }
 
-.btn-secondary:hover {
+.btn-secondary:hover:enabled {
   background-color: #514cd3;
 }
 
@@ -138,7 +143,7 @@ button:hover {
   color: #ffffff;
 }
 
-.btn-success:hover {
+.btn-success:hover:enabled {
   background-color: #37a260;
 }
 
@@ -147,7 +152,7 @@ button:hover {
   color: #ffffff;
 }
 
-.btn-warning:hover {
+.btn-warning:hover:enabled {
   background-color: #b19c51;
 }
 
@@ -156,7 +161,7 @@ button:hover {
   color: #ffffff;
 }
 
-.btn-danger:hover {
+.btn-danger:hover:enabled {
   background-color: #b95a5a;
 }
 

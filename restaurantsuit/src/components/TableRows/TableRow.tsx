@@ -6,6 +6,7 @@ import {
   AlignItems,
   JustifyContent,
 } from "../../widgets/FlexProperties/FlexProperties";
+import { useAppSelector } from "../../store/store";
 
 interface Props {
   id: number;
@@ -16,6 +17,7 @@ interface Props {
 
 export default function TableRow(props: Props) {
   const [busy, setBusy] = useState(props.isBusy);
+  const user = useAppSelector((state) => state.auth.user);
 
   return (
     <tr>
@@ -34,22 +36,28 @@ export default function TableRow(props: Props) {
           >
             {busy ? "Desocupar" : "Ocupar"}
           </button>
-          <Dropdown buttonText="Ações">
-            <DropdownItem
-              itemName="Editar"
-              faIcon="fas fa-solid fa-pen fa-fw"
-              onClick={() => {
-                console.log(props.id);
-                // dispatch(setProduct(props.id));
-                // navigate("/updateProduct");
-              }}
-            />
-            <DropdownItem
-              itemName="Remover"
-              faIcon="fas fa-solid fa-trash fa-fw"
-              onClick={() => {}}
-            />
-          </Dropdown>
+          {user.role === 0 ? (
+            <>
+              <Dropdown buttonText="Ações">
+                <DropdownItem
+                  itemName="Editar"
+                  faIcon="fas fa-solid fa-pen fa-fw"
+                  onClick={() => {
+                    console.log(props.id);
+                    // dispatch(setProduct(props.id));
+                    // navigate("/updateProduct");
+                  }}
+                />
+                <DropdownItem
+                  itemName="Remover"
+                  faIcon="fas fa-solid fa-trash fa-fw"
+                  onClick={() => {}}
+                />
+              </Dropdown>
+            </>
+          ) : (
+            <div />
+          )}
         </Row>
       </td>
     </tr>
