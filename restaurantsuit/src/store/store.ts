@@ -3,12 +3,14 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { AuthSlice } from "./features/authSlice";
 import { CategoriesSlice } from "./features/categoriesSlice";
 import { ProductsSlice } from "./features/productsSlice";
+import { TableSlice } from "./features/tablesSlice";
 
 export const store = configureStore({
   reducer: {
     auth: AuthSlice.reducer,
     categories: CategoriesSlice.reducer,
-    products: ProductsSlice.reducer
+    products: ProductsSlice.reducer,
+    tables: TableSlice.reducer
   },
   devTools: true
 });
