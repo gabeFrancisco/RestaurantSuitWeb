@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import CategoryBox from "../../components/CategoryBox/CategoryBox";
+import CategoryBox from "../../components/Boxes/CategoryBox";
 import CategoryTable from "../../components/CategoryTable/CategoryTable";
 import SectionTitle from "../../widgets/SectionTitle/SectionTitle";
 
 export default function CategoriesPage() {
-  const navigate = useNavigate();
   const [categoryBox, setCategoryBox] = useState(false);
 
   return (

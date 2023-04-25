@@ -19,6 +19,14 @@ const initialState: TableState = {
 	tableList: new Array<Table>()
 };
 
+export const fetchAllTables = createAsyncThunk(
+	"tables/fetchAll",
+	async() => {
+		const response = await apiService.get('/tables').then(res => res.data);
+		return response;
+	}
+)
+
 export const TableSlice = createSlice({
 	name: 'Tables',
 	initialState,

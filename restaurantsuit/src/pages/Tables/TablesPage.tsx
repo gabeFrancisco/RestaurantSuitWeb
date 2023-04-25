@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import SectionTitle from "../../widgets/SectionTitle/SectionTitle";
 import TablesTable from "../../components/TablesTable/TablesTable";
 import { useAppSelector } from "../../store/store";
@@ -7,9 +7,11 @@ import {
   AlignItems,
   JustifyContent,
 } from "../../widgets/FlexProperties/FlexProperties";
+import TableBox from "../../components/Boxes/TableBox";
 
 export default function TablesPage() {
   const user = useAppSelector((state) => state.auth.user);
+  const [tableBox, setTableBox] = useState(false);
 
   return (
     <div className="PageFade">
@@ -20,10 +22,7 @@ export default function TablesPage() {
       >
         {user.role !== 0 ? (
           <>
-            <button
-              className="btn btn-primary"
-              disabled={true}
-            >
+            <button className="btn btn-primary" disabled={true}>
               <i className="fas fa-plus  fa-fw"></i>
               Nova mesa!
             </button>
@@ -37,7 +36,7 @@ export default function TablesPage() {
             <button
               className="btn btn-primary"
               disabled={false}
-              // onClick={() => navigate("/newProduct")}
+              onClick={() => setTableBox(true)}
             >
               <i className="fas fa-plus  fa-fw"></i>
               Nova mesa!
@@ -45,7 +44,7 @@ export default function TablesPage() {
           </>
         )}
       </Row>
-
+      {tableBox ? <TableBox closeHandler={() => setTableBox(false)} /> : null}
       <TablesTable />
     </div>
   );

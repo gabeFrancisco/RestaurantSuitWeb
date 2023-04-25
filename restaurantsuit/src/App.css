@@ -204,3 +204,9 @@ i {
 .Table-Area table td {
   padding: 0.3rem 2rem 0.3rem 1rem;
 }
+
+.center{
+  text-align: center;
+  white-space: nowrap;
+  table-layout: fixed;
+}

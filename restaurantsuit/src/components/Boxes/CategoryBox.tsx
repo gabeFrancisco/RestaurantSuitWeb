@@ -6,8 +6,6 @@ import Card from "../../widgets/Card/Card";
 import { AlignItems, JustifyContent } from "../../widgets/FlexProperties/FlexProperties";
 import Row from "../../widgets/Row/Row";
 
-import "./CategoryBox.css";
-
 interface Props {
   closeHandler: () => void;
 }

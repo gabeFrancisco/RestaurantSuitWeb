@@ -1,11 +1,12 @@
 import { useFormik } from "formik";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LoginService from "../../services/loginService";
 import { fetchLogin } from "../../store/features/authSlice";
 import { useAppDispatch } from "../../store/store";
 
 import "./LoginPage.css";
+import LoadingScreen from "../../widgets/Loading/LoadingScreen";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -21,15 +22,18 @@ export default function LoginPage() {
       password: "",
     },
     onSubmit: (values) => {
+      setLoading(true);
       dispatch(fetchLogin(values)).then(() => {
         navigate("/dashboard");
       });
     },
   });
 
+  const [loading, setLoading] = useState(false);
   return (
     <div className="LoginPage">
-      <div className="FormArea">  
+      {loading ? <LoadingScreen /> : null}
+      <div className="FormArea">
         <h1>Seja bem-vindo!</h1>
         <form onSubmit={formik.handleSubmit}>
           <div className="Form">
