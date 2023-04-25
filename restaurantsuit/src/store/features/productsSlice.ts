@@ -39,7 +39,7 @@ export const addProduct = createAsyncThunk(
   async (data: {}, thunkAPI) => {
     const response = await apiService.post("/products", data).then((res) => {
       if (res.status === 200) {
-        thunkAPI.dispatch(fetchAllProducts);
+        thunkAPI.dispatch(fetchAllProducts());
         return res.data;
       }
     });
@@ -52,7 +52,7 @@ export const updateProduct = createAsyncThunk(
   async (data: {}, thunkAPI) => {
     const response = await apiService.put("/products", data).then((res) => {
       if (res.status === 200) {
-        thunkAPI.dispatch(fetchAllProducts);
+        thunkAPI.dispatch(fetchAllProducts());
         return res.data;
       }
     });

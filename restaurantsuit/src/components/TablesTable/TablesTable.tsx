@@ -12,7 +12,7 @@ export default function TablesTable() {
 
   useEffect(() => {
     dispatch(fetchAllTables()).then(() => setLoaded(true))
-  })
+  }, [])
 
   return (
     <div className="Table-Area">

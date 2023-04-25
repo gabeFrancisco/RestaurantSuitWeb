@@ -7,18 +7,24 @@ import {
   JustifyContent,
 } from "../../widgets/FlexProperties/FlexProperties";
 import Column from "../../widgets/Column/Column";
+import { useAppDispatch } from "../../store/store";
+import { addTable } from "../../store/features/tablesSlice";
 
 interface Props {
   closeHandler: () => void;
 }
 
 export default function TableBox(props: Props) {
+  const dispatch = useAppDispatch();
   const formik = useFormik({
     initialValues: {
       number: 0,
       chairs: 0,
     },
-    onSubmit: () => {},
+    onSubmit: (values, { resetForm }) => {
+      dispatch(addTable(values))
+      resetForm();
+    },
   });
   return (
     <div className="PageFade">
