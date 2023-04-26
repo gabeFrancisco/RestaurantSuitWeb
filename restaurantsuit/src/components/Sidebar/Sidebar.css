@@ -1,6 +1,6 @@
 aside{
-  background-color: #fcfcfc;
-  color: #585858;
+  background-color: var(--primaryDk);
+  color: #fff;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   top: 0;
   left: 0;
@@ -30,8 +30,8 @@ aside ul li a{
 }
 
 aside ul li a:hover{
-  background-color: var(--primaryDk);
-  color: #fff;
+  background-color: #fff;
+  color: var(--primaryDk);
   border-radius: 5px;
   cursor: pointer;
   transition: ease background-color 0.3s;
