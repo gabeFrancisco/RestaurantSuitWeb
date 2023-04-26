@@ -1,0 +1,17 @@
+.OrderCard .badge-green{
+  padding: 0.7rem 2.7rem;
+  border-radius: 0.7rem;
+  background: linear-gradient(to right, #209c4d, #44de7d);
+  color: #fff;
+  font-weight: bolder;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.OrderCard .badge-yellow{
+  padding: 0.7rem 2.7rem;
+  border-radius: 0.7rem;
+  background: linear-gradient(to right, #9c9c20, #dede44);
+  color: #fff;
+  font-weight: bolder;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
