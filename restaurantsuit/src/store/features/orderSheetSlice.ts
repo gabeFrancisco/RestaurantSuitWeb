@@ -10,6 +10,8 @@ interface OrderSheetState {
 const initialState: OrderSheetState = {
   orderSheet: {
     id: -1,
+    orderState: -1,
+    openBy: '',
     tableId: -1,
     customerId: -1,
     createdAt: "",

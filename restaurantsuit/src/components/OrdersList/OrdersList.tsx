@@ -28,15 +28,14 @@ export default function OrdersList() {
         <>
           {orderSheets.length > 0 ? (
             orderSheets.map((order) => (
-              <>
-              {console.log(order)}
-                <OrderCard
-                  id={order.id}
-                  customerId={order.customerId as number}
-                  tableId={order.tableId}
-                  productOrders={order.productOrders}
-                />
-              </>
+              <OrderCard
+                id={order.id}
+                orderState={order.orderState}
+                openBy={order.openBy}
+                customerId={order.customerId as number}
+                tableId={order.tableId}
+                productOrders={order.productOrders}
+              />
             ))
           ) : (
             <Center>

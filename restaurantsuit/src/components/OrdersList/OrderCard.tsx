@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 
 import "./OrderCard.css";
-import { OrderSheet } from "../../models/interfaces/OrderSheet";
 import Card from "../../widgets/Card/Card";
 import Row from "../../widgets/Row/Row";
 import {
@@ -10,18 +9,19 @@ import {
 } from "../../widgets/FlexProperties/FlexProperties";
 import Column from "../../widgets/Column/Column";
 import { ProductOrder } from "../../models/interfaces/ProductOrder";
-import ProductRow from "../TableRows/ProductRow";
-import { useAppSelector } from "../../store/store";
+import orderStatusService from "../../services/orderStatusService";
 
 interface Props {
   id: number;
+  orderState: number;
+  openBy: string;
   tableId: number;
   customerId: number;
   productOrders: Array<ProductOrder>;
 }
 
 export default function OrderCard(props: Props) {
-  const user = useAppSelector((state) => state.auth.user.username);
+  const orderState = orderStatusService.returnStatus(props.orderState);
 
   return (
     <div className="OrderCard">
@@ -46,7 +46,7 @@ export default function OrderCard(props: Props) {
                 <h2>Mesa #{props.tableId}</h2>
               </div>
             </Row>
-            <p>Pedido aberto por: {user}</p>
+            <p>Pedido aberto por: {props.openBy}</p>
           </Column>
           <Column
             alignItems={AlignItems.Center}
@@ -65,7 +65,7 @@ export default function OrderCard(props: Props) {
                   />
                 </>
               ))} */}
-              Estado: em preparação...
+              Estado: {orderState}
             </h2>
           </Column>
         </Row>
