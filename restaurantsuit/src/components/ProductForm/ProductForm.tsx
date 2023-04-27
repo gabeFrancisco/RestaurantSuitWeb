@@ -61,6 +61,7 @@ export default function ProductForm(props: Props) {
       if (props.isEdit) {
         dispatch(updateProduct(values)).then(() => navigate("/products"));
       } else {
+        console.log(values)
         dispatch(addProduct(values)).then(() => navigate("/products"));
       }
     },

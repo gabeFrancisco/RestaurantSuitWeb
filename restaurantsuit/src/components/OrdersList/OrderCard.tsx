@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import "./OrderCard.css";
 import Card from "../../widgets/Card/Card";
@@ -9,7 +9,8 @@ import {
 } from "../../widgets/FlexProperties/FlexProperties";
 import Column from "../../widgets/Column/Column";
 import { ProductOrder } from "../../models/interfaces/ProductOrder";
-import orderStatusService from "../../services/orderStatusService";
+import orderStatusService from "../../services/orderStateService";
+import ProductOrderTable from "../ProductOrderTable/ProductOrderTable";
 
 interface Props {
   id: number;
@@ -22,9 +23,15 @@ interface Props {
 
 export default function OrderCard(props: Props) {
   const orderState = orderStatusService.returnStatus(props.orderState);
+  const [showDetails, setShowDetails] = useState(false);
 
   return (
-    <div className="OrderCard">
+    <div
+      className="OrderCard"
+      onClick={() =>
+        showDetails ? setShowDetails(false) : setShowDetails(true)
+      }
+    >
       <Card>
         <Row
           alignItems={AlignItems.Center}
@@ -36,7 +43,7 @@ export default function OrderCard(props: Props) {
           >
             <Row
               alignItems={AlignItems.Center}
-              justifyContent={JustifyContent.Center}
+              justifyContent={JustifyContent.SpaceBetween}
             >
               <div className="badge-green m-1">
                 <h2>Pedido #{props.id}</h2>
@@ -46,26 +53,18 @@ export default function OrderCard(props: Props) {
                 <h2>Mesa #{props.tableId}</h2>
               </div>
             </Row>
-            <p>Pedido aberto por: {props.openBy}</p>
+            {showDetails ? (
+              <div className="Details">
+                <ProductOrderTable props={props.productOrders}/>
+                <p>Pedido aberto por: {props.openBy}</p>
+              </div>) : <div />}
           </Column>
           <Column
             alignItems={AlignItems.Center}
             justifyContent={JustifyContent.Center}
           >
             <h2 className="m-2">
-              {/* {props.productOrders.map((el) => (
-                <>
-                  <ProductRow
-                    id={el.product.id}
-                    productName={el.product.name}
-                    categoryId={el.product.categoryId}
-                    categoryName={el.product.categoryName}
-                    price={el.product.price}
-                    quantity={el.product.quantity}
-                  />
-                </>
-              ))} */}
-              Estado: {orderState}
+              {orderState}
             </h2>
           </Column>
         </Row>

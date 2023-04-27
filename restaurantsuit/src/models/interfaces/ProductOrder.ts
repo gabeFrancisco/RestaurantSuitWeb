@@ -6,5 +6,4 @@ export interface ProductOrder extends BaseEntity{
     productId: number;
     product: Product;
     quantity: number;
-    total: () => number;
 }

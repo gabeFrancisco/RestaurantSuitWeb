@@ -39,7 +39,7 @@ export default function OrdersList() {
             ))
           ) : (
             <Center>
-              <h2>Por enquanto não há nada aqui ;)</h2>
+              <h2 className="m-3">Por enquanto não há nada aqui ;)</h2>
             </Center>
           )}
         </>

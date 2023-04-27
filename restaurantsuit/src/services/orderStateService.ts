@@ -1,4 +1,4 @@
-class OrderStatusService {
+class OrderStateService {
   returnStatus = (status: number) => {
     switch (status) {
       case 0:
@@ -13,4 +13,4 @@ class OrderStatusService {
   };
 }
 
-export default new OrderStatusService();
+export default new OrderStateService();
