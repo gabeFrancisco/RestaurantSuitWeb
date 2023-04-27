@@ -3,9 +3,9 @@ import { ProductOrder } from "../../models/interfaces/ProductOrder";
 import ProductOrderRow from "./ProductOrderRow";
 
 export default function ProductOrderTable({
-  props,
+  productOrderList,
 }: {
-  props: Array<ProductOrder>;
+  productOrderList: Array<ProductOrder>;
 }) {
   return (
     <div className="Table-Area">
@@ -20,8 +20,8 @@ export default function ProductOrderTable({
           </tr>
         </thead>
         <tbody>
-          {props.length > 0 ? (
-            props.map((pOrder) => <ProductOrderRow props={pOrder} />)
+          {productOrderList.length > 0 ? (
+            productOrderList.map((pOrder) => <ProductOrderRow productOrder={pOrder} />)
           ) : (
             <tr className="center">
               <h2 className="m-3">Por enquanto não há nada aqui ;)</h2>

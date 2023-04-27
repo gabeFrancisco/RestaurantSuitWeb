@@ -33,16 +33,7 @@ export default function ProductTable() {
           </thead>
           <tbody>
             {products.length > 0 ? (
-              products.map((product) => (
-                <ProductRow
-                  id={product.id}
-                  productName={product.name}
-                  categoryName={product.categoryName}
-                  categoryId={product.categoryId}
-                  quantity={product.quantity}
-                  price={product.price}
-                />
-              ))
+              products.map((product) => <ProductRow product={product} />)
             ) : (
               <tr className="center">
                 <h2 className="m-3">Por enquanto não há nada aqui ;)</h2>

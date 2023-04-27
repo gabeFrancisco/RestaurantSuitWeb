@@ -7,15 +7,9 @@ import {
   updateCategory,
 } from "../../store/features/categoriesSlice";
 import { useAppDispatch } from "../../store/store";
+import { Category } from "../../models/interfaces/Category";
 
-interface Props {
-  id: number;
-  categoryName: string;
-  color: string;
-  productsQty: number;
-}
-
-export default function CategoryRow(props: Props) {
+export default function CategoryRow({category} : {category: Category}) {
   const [categoryRemovalModal, setCategoryRemovalModal] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [productsCount, setProductsCount] = useState(0);
@@ -24,7 +18,7 @@ export default function CategoryRow(props: Props) {
   
   useEffect(() => {
     apiService
-    .get(`categories/productsCount/${props.id}`)
+    .get(`categories/productsCount/${category.id}`)
     .then(res => {
       const count = res.data;
       setProductsCount(count)
@@ -33,9 +27,9 @@ export default function CategoryRow(props: Props) {
 
   const formik = useFormik({
     initialValues: {
-      id: props.id,
-      name: props.categoryName,
-      color: props.color,
+      id: category.id,
+      name: category.name,
+      color: category.color,
     },
     onSubmit: (values) => {
       dispatch(updateCategory(values));
@@ -89,12 +83,12 @@ export default function CategoryRow(props: Props) {
       ) : (
         // Normal mode
         <tr>
-          <td>{props.categoryName}</td>
+          <td>{category.name}</td>
           <td className="Category-Color-Wrapper">
             <div
               className="Category-Color"
               style={{
-                backgroundColor: props.color,
+                backgroundColor: category.color,
               }}
             ></div>
           </td>
@@ -102,8 +96,8 @@ export default function CategoryRow(props: Props) {
           <td className="button-area">
             {categoryRemovalModal ? (
               <CategoryRemovalModal
-                categoryId={props.id}
-                categoryName={props.categoryName}
+                categoryId={category.id}
+                categoryName={category.name}
                 closeHandler={closeCategoryRemovalModal}
               />
             ) : null}

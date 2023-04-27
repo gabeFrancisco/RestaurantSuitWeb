@@ -36,10 +36,7 @@ export default function CategoryTable() {
             {categories.length > 0 ? (
               categories.map((cat) => (
                 <CategoryRow
-                  id={cat.id}
-                  categoryName={cat.name}
-                  color={cat.color}
-                  productsQty={7}
+                 category={cat}
                 />
               ))
             ) : (

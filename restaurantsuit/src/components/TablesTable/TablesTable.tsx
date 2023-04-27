@@ -32,12 +32,9 @@ export default function TablesTable() {
           </thead>
           <tbody>
             {tables.length > 0 ? (
-              tables.map((el) => (
+              tables.map((table) => (
                 <TableRow
-                  id={el.id}
-                  number={el.number}
-                  chairs={el.chairs}
-                  isBusy={el.isBusy}
+                 table={table}
                 />
               ))
             ) : (

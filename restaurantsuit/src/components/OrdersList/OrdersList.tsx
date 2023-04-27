@@ -27,14 +27,9 @@ export default function OrdersList() {
       ) : (
         <>
           {orderSheets.length > 0 ? (
-            orderSheets.map((order) => (
+            orderSheets.map((orderSheet) => (
               <OrderCard
-                id={order.id}
-                orderState={order.orderState}
-                openBy={order.openBy}
-                customerId={order.customerId as number}
-                tableId={order.tableId}
-                productOrders={order.productOrders}
+              orderSheet={orderSheet}
               />
             ))
           ) : (

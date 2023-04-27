@@ -11,18 +11,10 @@ import Column from "../../widgets/Column/Column";
 import { ProductOrder } from "../../models/interfaces/ProductOrder";
 import orderStatusService from "../../services/orderStateService";
 import ProductOrderTable from "../ProductOrderTable/ProductOrderTable";
+import { OrderSheet } from "../../models/interfaces/OrderSheet";
 
-interface Props {
-  id: number;
-  orderState: number;
-  openBy: string;
-  tableId: number;
-  customerId: number;
-  productOrders: Array<ProductOrder>;
-}
-
-export default function OrderCard(props: Props) {
-  const orderState = orderStatusService.returnStatus(props.orderState);
+export default function OrderCard({orderSheet} : {orderSheet: OrderSheet}) {
+  const orderState = orderStatusService.returnStatus(orderSheet.orderState);
   const [showDetails, setShowDetails] = useState(false);
 
   return (
@@ -46,17 +38,17 @@ export default function OrderCard(props: Props) {
               justifyContent={JustifyContent.SpaceBetween}
             >
               <div className="badge-green m-1">
-                <h2>Pedido #{props.id}</h2>
+                <h2>Pedido #{orderSheet.id}</h2>
               </div>
 
               <div className="badge-yellow m-1">
-                <h2>Mesa #{props.tableId}</h2>
+                <h2>Mesa #{orderSheet.tableId}</h2>
               </div>
             </Row>
             {showDetails ? (
               <div className="Details">
-                <ProductOrderTable props={props.productOrders}/>
-                <p>Pedido aberto por: {props.openBy}</p>
+                <ProductOrderTable productOrderList={orderSheet.productOrders}/>
+                <p>Pedido aberto por: {orderSheet.openBy}</p>
               </div>) : <div />}
           </Column>
           <Column

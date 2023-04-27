@@ -5,17 +5,9 @@ import { useAppDispatch } from "../../store/store";
 import Dropdown from "../../widgets/Dropdown/Dropdown";
 import DropdownItem from "../../widgets/Dropdown/DropdownItem";
 import ProductRemovalModal from "../../modals/ProductRemovalModal/ProductRemovalModa";
+import { Product } from "../../models/interfaces/Product";
 
-interface Props {
-  id: number;
-  productName: string;
-  categoryId: number;
-  categoryName: string;
-  quantity: number;
-  price: number;
-}
-
-export default function ProductRow(props: Props) {
+export default function ProductRow({product} : {product: Product}) {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [productRemovalModal, setProductRemovalModal] = useState(false);
@@ -26,22 +18,22 @@ export default function ProductRow(props: Props) {
       {productRemovalModal ? (
         <ProductRemovalModal
           closeHandler={closeProductRemovalModal}
-          productId={props.id}
-          productName={props.productName}
+          productId={product.id}
+          productName={product.name}
         />
       ) : null}
-      <td>{props.productName}</td>
-      <td>{props.categoryName}</td>
-      <td>{props.quantity}</td>
-      <td>R${props.price.toFixed(2)}</td>
+      <td>{product.name}</td>
+      <td>{product.categoryName}</td>
+      <td>{product.quantity}</td>
+      <td>R${product.price.toFixed(2)}</td>
       <td>
         <Dropdown buttonText="Ações">
           <DropdownItem
             itemName="Editar"
             faIcon="fas fa-solid fa-pen fa-fw"
             onClick={() => {
-              console.log(props.id);
-              dispatch(setProduct(props.id));
+              console.log(product.id);
+              dispatch(setProduct(product.id));
               navigate("/updateProduct");
             }}
           />

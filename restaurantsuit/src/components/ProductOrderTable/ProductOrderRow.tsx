@@ -1,14 +1,14 @@
 import React from 'react'
 import { ProductOrder } from '../../models/interfaces/ProductOrder'
 
-export default function ProductOrderRow({ props }: { props: ProductOrder }){
-  const productTotal = props.quantity * props.product.price;
+export default function ProductOrderRow({ productOrder }: { productOrder: ProductOrder }){
+  const productTotal = productOrder.quantity * productOrder.product.price;
   return(
     <tr>
-      <td>{props.product.name}</td>
-      <td>{props.product.categoryName}</td>
-      <td>R${props.product.price.toFixed(2)}</td>
-      <td>{props.quantity}</td>
+      <td>{productOrder.product.name}</td>
+      <td>{productOrder.product.categoryName}</td>
+      <td>R${productOrder.product.price.toFixed(2)}</td>
+      <td>{productOrder.quantity}</td>
       <td>R${productTotal.toFixed(2)}</td>
     </tr> 
   )

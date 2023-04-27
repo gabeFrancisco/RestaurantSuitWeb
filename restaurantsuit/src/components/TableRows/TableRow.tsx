@@ -8,16 +8,10 @@ import {
 } from "../../widgets/FlexProperties/FlexProperties";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import { setBusyState } from "../../store/features/tablesSlice";
+import { Table } from "../../models/interfaces/Table";
 
-interface Props {
-  id: number;
-  number: number;
-  chairs: number;
-  isBusy: boolean;
-}
-
-export default function TableRow(props: Props) {
-  const [busy, setBusy] = useState(props.isBusy);
+export default function TableRow({table} : {table: Table}) {
+  const [busy, setBusy] = useState(table.isBusy);
   const user = useAppSelector((state) => state.auth.user);
   const dispatch = useAppDispatch();
 
@@ -37,7 +31,7 @@ export default function TableRow(props: Props) {
   const checkBusyState = () => {
     dispatch(
       setBusyState({
-        tableId: props.id,
+        tableId: table.id,
         state: returnBusyState(),
         confirm: true,
       })
@@ -46,8 +40,8 @@ export default function TableRow(props: Props) {
 
   return (
     <tr>
-      <td>{props.number}</td>
-      <td>{props.chairs}</td>
+      <td>{table.number}</td>
+      <td>{table.chairs}</td>
       <td>{busy ? "Em uso" : "Desocupada"}</td>
       <td>
         <Row
@@ -68,8 +62,8 @@ export default function TableRow(props: Props) {
                   itemName="Editar"
                   faIcon="fas fa-solid fa-pen fa-fw"
                   onClick={() => {
-                    console.log(props.id);
-                    // dispatch(setProduct(props.id));
+                    console.log(table.id);
+                    // dispatch(setProduct(table.id));
                     // navigate("/updateProduct");
                   }}
                 />
