@@ -17,6 +17,7 @@ import NewProductPage from "./pages/Products/NewProduct/NewProductPage";
 import UpdateProductPage from "./pages/Products/UpdateProduct/UpdateProductPage";
 import TablesPage from "./pages/Tables/TablesPage";
 import OrdersPage from "./pages/Orders/OrdersPage";
+import NewOrderPage from "./pages/NewOrderPage/NewOrderPage";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -39,6 +40,7 @@ function App() {
             <Route path="updateProduct" element={<UpdateProductPage/>}/>
             <Route path="tables" element={<TablesPage/>}/>
             <Route path="orders" element={<OrdersPage/>}/>
+            <Route path="newOrder" element={<NewOrderPage/>}/>
           </Route>
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

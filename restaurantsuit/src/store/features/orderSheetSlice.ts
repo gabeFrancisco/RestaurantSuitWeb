@@ -29,6 +29,19 @@ export const fetchAllOrderSheets = createAsyncThunk(
   }
 );
 
+export const addOrder = createAsyncThunk(
+  "orderSheets",
+  async (data: {}, thunkAPI) => {
+    const response = await apiService.post("/orders", data).then(res => {
+      if(res.status === 200){
+        thunkAPI.dispatch(fetchAllOrderSheets)
+        return res.data
+      }
+    })
+    return response;
+  }
+)
+
 export const OrderSheetSlice = createSlice({
   name: "OrderSheets",
   initialState,
