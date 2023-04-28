@@ -22,7 +22,7 @@ export default function ProductPage() {
         <i className="fas fa-plus  fa-fw"></i>
         Novo produto!
       </button>
-      <ProductTable/>
+      <ProductTable isOrder={false}/>
     </div>
   );
 }

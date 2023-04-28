@@ -7,10 +7,17 @@ import DropdownItem from "../../widgets/Dropdown/DropdownItem";
 import ProductRemovalModal from "../../modals/ProductRemovalModa";
 import { Product } from "../../models/interfaces/Product";
 
-export default function ProductRow({product} : {product: Product}) {
+export default function ProductRow({
+  product,
+  isOrder,
+}: {
+  product: Product;
+  isOrder: boolean;
+}) {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [productRemovalModal, setProductRemovalModal] = useState(false);
+  const [quantity, setQuantity] = useState(0);
   const closeProductRemovalModal = () => setProductRemovalModal(false);
 
   return (
@@ -24,7 +31,17 @@ export default function ProductRow({product} : {product: Product}) {
       ) : null}
       <td>{product.name}</td>
       <td>{product.categoryName}</td>
-      <td>{product.quantity}</td>
+      {isOrder ? (
+        <td>
+          <input
+            type="number"
+            value={quantity}
+            onChange={(e) => setQuantity(parseInt(e.target.value))}
+            style={{ width: "5rem" }}
+          />
+        </td>
+      ) : null}
+
       <td>R${product.price.toFixed(2)}</td>
       <td>
         <Dropdown buttonText="Ações">

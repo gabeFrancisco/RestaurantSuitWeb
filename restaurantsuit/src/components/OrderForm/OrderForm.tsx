@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "../../widgets/Card/Card";
 import Column from "../../widgets/Column/Column";
 import {
@@ -11,6 +11,7 @@ import { fetchAllTables } from "../../store/features/tablesSlice";
 import { ProductOrder } from "../../models/interfaces/ProductOrder";
 import ProductOrderTable from "../ProductOrderTable/ProductOrderTable";
 import { useNavigate } from "react-router-dom";
+import ProductOrderModal from "../../modals/ProductOrderModal";
 
 interface Props {
   isEdit: boolean;
@@ -28,14 +29,23 @@ export default function OrderForm(props: Props) {
     dispatch(fetchAllTables());
   });
 
+  const [productOrderModal, setProductOrderModal] = useState(false);
+  const closeProductOrderModal = () => setProductOrderModal(false);
+
   return (
     <div className="PageFade m-2">
       <div className="OrderForm">
+        {productOrderModal ? (
+          <ProductOrderModal closeHandler={closeProductOrderModal} />
+        ) : null}
         <Row
           alignItems={AlignItems.Stretch}
           justifyContent={JustifyContent.Left}
         >
-          <button className="btn btn-primary ">
+          <button
+            className="btn btn-primary"
+            onClick={() => setProductOrderModal(true)}
+          >
             <i className="fas fa-plus fa-fw"></i>Adiconar produto
           </button>
           <select className="btn btn-success" name="tableId" id="tableId">
@@ -60,7 +70,9 @@ export default function OrderForm(props: Props) {
           alignItems={AlignItems.Center}
           justifyContent={JustifyContent.Center}
         >
-          <button className="btn btn-danger" onClick={() => navigate(-1)}>Cancelar</button>
+          <button className="btn btn-danger" onClick={() => navigate(-1)}>
+            Cancelar
+          </button>
           <button className="btn btn-primary">
             <i className="fas fa-ticket fa-fw"></i>Criar pedido!
           </button>

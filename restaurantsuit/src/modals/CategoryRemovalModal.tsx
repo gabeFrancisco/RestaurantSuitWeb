@@ -30,7 +30,7 @@ export default function CategoryRemovalModal(props: Props) {
         <b>{props.categoryName}</b>?
       </h3>
 
-      <div className="Button-Area">
+      <div className="Button-Area"> 
         <button className="btn-primary" onClick={() => props.closeHandler()}>
           Cancelar
         </button>
