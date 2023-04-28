@@ -16,7 +16,6 @@ interface Props {
 
 export default function OrderForm(props: Props) {
   const tables = useAppSelector(state => state.tables.tableList)
-  const productOrders = new Array<ProductOrder>();
   const dispatch = useAppDispatch()
   useEffect(() => {
     dispatch(fetchAllTables())
