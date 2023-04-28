@@ -4,7 +4,7 @@ import { setProduct } from "../../store/features/productsSlice";
 import { useAppDispatch } from "../../store/store";
 import Dropdown from "../../widgets/Dropdown/Dropdown";
 import DropdownItem from "../../widgets/Dropdown/DropdownItem";
-import ProductRemovalModal from "../../modals/ProductRemovalModal/ProductRemovalModa";
+import ProductRemovalModal from "../../modals/ProductRemovalModa";
 import { Product } from "../../models/interfaces/Product";
 
 export default function ProductRow({product} : {product: Product}) {

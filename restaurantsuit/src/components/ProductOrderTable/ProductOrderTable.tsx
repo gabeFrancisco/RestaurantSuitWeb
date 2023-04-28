@@ -24,7 +24,7 @@ export default function ProductOrderTable({
             productOrderList.map((pOrder) => <ProductOrderRow productOrder={pOrder} />)
           ) : (
             <tr className="center">
-              <h2 className="m-3">Por enquanto não há nada aqui ;)</h2>
+              <h2 className="m-3">Adicione produtos aqui!</h2>
             </tr>
           )}
         </tbody>

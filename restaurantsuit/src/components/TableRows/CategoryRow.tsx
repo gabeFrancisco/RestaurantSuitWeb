@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
 import React, { useEffect, useState } from "react";
-import CategoryRemovalModal from "../../modals/CategoryRemovalModal/CategoryRemovalModal";
+import CategoryRemovalModal from "../../modals/CategoryRemovalModal";
 import apiService from "../../services/apiService";
 import {
   getProductsCountByCategory,

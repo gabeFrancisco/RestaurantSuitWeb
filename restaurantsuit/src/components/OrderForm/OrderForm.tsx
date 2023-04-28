@@ -9,41 +9,63 @@ import Row from "../../widgets/Row/Row";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import { fetchAllTables } from "../../store/features/tablesSlice";
 import { ProductOrder } from "../../models/interfaces/ProductOrder";
+import ProductOrderTable from "../ProductOrderTable/ProductOrderTable";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   isEdit: boolean;
 }
 
 export default function OrderForm(props: Props) {
-  const tables = useAppSelector(state => state.tables.tableList)
-  const dispatch = useAppDispatch()
+  const navigate = useNavigate();
+  const tables = useAppSelector((state) => state.tables.tableList);
+  const orderSheet = useAppSelector((state) => state.orderSheets.orderSheet);
+  const productOrders = useAppSelector(
+    (state) => state.productOrders.productOrderList
+  );
+  const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(fetchAllTables())
-  })
+    dispatch(fetchAllTables());
+  });
 
   return (
     <div className="PageFade m-2">
-        <div className="OrderForm">
-          <Column
-            alignItems={AlignItems.FlexStart}
-            justifyContent={JustifyContent.Left}
-          >
-            <Row
-              alignItems={AlignItems.Baseline}
-              justifyContent={JustifyContent.Left}
-            >
-              <label>Número da mesa:</label>
-              <select name="tableId" id="tableId">
-                {tables ? (
-                  tables.map(tab => {
-                    return <option value={tab.id}>{tab.id}</option>
-                  })
-                ) : (<option>Não há mesas!</option>)}
-              </select>
-              
-            </Row>
-          </Column>
-        </div>
+      <div className="OrderForm">
+        <Row
+          alignItems={AlignItems.Stretch}
+          justifyContent={JustifyContent.Left}
+        >
+          <button className="btn btn-primary ">
+            <i className="fas fa-plus fa-fw"></i>Adiconar produto
+          </button>
+          <select className="btn btn-success" name="tableId" id="tableId">
+            <option value="" disabled selected>
+              Número da mesa{" "}
+            </option>
+            {tables ? (
+              tables.map((tab) => {
+                return <option value={tab.id}>{tab.id}</option>;
+              })
+            ) : (
+              <option>Não há mesas!</option>
+            )}
+          </select>
+          <button className="btn btn-warning">
+            <i className="fas fa-user-group fa-fw"></i>Adicionar cliente
+          </button>
+          <div>Cliente: Nenhum selecionado</div>
+        </Row>
+        <ProductOrderTable productOrderList={productOrders} />
+        <Row
+          alignItems={AlignItems.Center}
+          justifyContent={JustifyContent.Center}
+        >
+          <button className="btn btn-danger" onClick={() => navigate(-1)}>Cancelar</button>
+          <button className="btn btn-primary">
+            <i className="fas fa-ticket fa-fw"></i>Criar pedido!
+          </button>
+        </Row>
+      </div>
     </div>
   );
 }
