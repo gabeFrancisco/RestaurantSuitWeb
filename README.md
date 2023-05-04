@@ -4,4 +4,4 @@
 
 ### Projeto ainda em desenvolvimento.
 
-App feito com React, Typescript, Redux-Toolkit, ASP.Net Core e MySql. Para acessar o reposório do backend clique [aqui!](https://github.com/gabeFrancisco/RestaurantSuitApi)
+App feito com React, Typescript, Redux-Toolkit, ASP.Net Core e MySql. Para acessar o repositório do backend clique [aqui!](https://github.com/gabeFrancisco/RestaurantSuitApi)
