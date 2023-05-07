@@ -42,7 +42,7 @@ export default function ProductForm(props: Props) {
   if (props.isEdit) {
     product = useAppSelector((state) => state.products.product);
     formProduct = {
-      id: product.id,
+      id: product.id as number,
       name: product.name,
       categoryId: product.categoryId,
       quantity: product.quantity,
@@ -103,7 +103,7 @@ export default function ProductForm(props: Props) {
               >
                 {categories ? (
                   categories.map((cat: Category) => {
-                    return <option value={+cat.id}>{cat.name}</option>;
+                    return <option value={cat.id as number}>{cat.name}</option>;
                   })
                 ) : (
                   <option>Nenhuma</option>

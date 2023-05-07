@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ProductOrder } from "../../models/interfaces/ProductOrder";
 import ProductOrderRow from "./ProductOrderRow";
 
 export default function ProductOrderTable({
   productOrderList,
+  hasQuantity,
 }: {
   productOrderList: Array<ProductOrder>;
+  hasQuantity: boolean;
 }) {
   return (
     <div className="Table-Area">
@@ -21,7 +23,9 @@ export default function ProductOrderTable({
         </thead>
         <tbody>
           {productOrderList.length > 0 ? (
-            productOrderList.map((pOrder) => <ProductOrderRow productOrder={pOrder} />)
+            productOrderList.map((pOrder) => (
+              <ProductOrderRow productOrder={pOrder} hasQuantity={hasQuantity}/>
+            ))
           ) : (
             <tr className="center">
               <h2 className="m-3">Adicione produtos aqui!</h2>

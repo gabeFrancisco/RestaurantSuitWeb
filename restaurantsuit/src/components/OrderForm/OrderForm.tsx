@@ -27,7 +27,7 @@ export default function OrderForm(props: Props) {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fetchAllTables());
-  });
+  }, []);
 
   const [productOrderModal, setProductOrderModal] = useState(false);
   const closeProductOrderModal = () => setProductOrderModal(false);
@@ -65,7 +65,7 @@ export default function OrderForm(props: Props) {
           </button>
           <div>Cliente: Nenhum selecionado</div>
         </Row>
-        <ProductOrderTable productOrderList={productOrders} />
+        <ProductOrderTable productOrderList={productOrders} hasQuantity/>
         <Row
           alignItems={AlignItems.Center}
           justifyContent={JustifyContent.Center}

@@ -31,7 +31,7 @@ export default function TableRow({table} : {table: Table}) {
   const checkBusyState = () => {
     dispatch(
       setBusyState({
-        tableId: table.id,
+        tableId: table.id as number,
         state: returnBusyState(),
         confirm: true,
       })

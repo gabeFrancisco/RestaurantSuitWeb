@@ -5,7 +5,7 @@ import ProductRow from "../TableRows/ProductRow";
 import { Loader } from "../../widgets/Loading/Loader";
 import Center from "../../widgets/Center/Center";
 
-export default function ProductTable({ isOrder }: { isOrder: boolean }) {
+export default function ProductTable({ isOrder, hasActions }: { isOrder: boolean, hasActions: boolean }) {
   const products = useAppSelector((state) => state.products.productList);
   const [loaded, setLoaded] = useState(false);
   const dispatch = useAppDispatch();
@@ -27,7 +27,6 @@ export default function ProductTable({ isOrder }: { isOrder: boolean }) {
               <th>Nome</th>
               <th>Categoria</th>
               {isOrder ? <th>Quantidade</th> : null}
-
               <th>Preço</th>
               <th>Ações</th>
             </tr>
@@ -35,7 +34,7 @@ export default function ProductTable({ isOrder }: { isOrder: boolean }) {
           <tbody>
             {products.length > 0 ? (
               products.map((product) => (
-                <ProductRow product={product} isOrder={isOrder} />
+                <ProductRow product={product} isOrder={isOrder} hasActions={hasActions}/>
               ))
             ) : (
               <tr className="center">

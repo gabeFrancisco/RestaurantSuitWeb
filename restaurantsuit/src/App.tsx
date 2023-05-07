@@ -10,14 +10,14 @@ import PrivateRoutes from "./components/PrivateRoutes/PrivateRoutes";
 import CategoriesPage from "./pages/Categories/CategoriesPage";
 import NotFoundPage from "./pages/NotFound/NotFoundPage";
 import Dashboard from "./pages/Dashboard/Dashboard";
-
-import "./App.css";
 import ProductPage from "./pages/Products/ProductPage/ProductsPage";
 import NewProductPage from "./pages/Products/NewProduct/NewProductPage";
 import UpdateProductPage from "./pages/Products/UpdateProduct/UpdateProductPage";
 import TablesPage from "./pages/Tables/TablesPage";
 import OrdersPage from "./pages/Orders/OrdersPage";
-import NewOrderPage from "./pages/NewOrderPage/NewOrderPage";
+import NewOrderPage from "./pages/Orders/NewOrderPage";
+
+import "./App.css";
 
 function App() {
   const dispatch = useAppDispatch();

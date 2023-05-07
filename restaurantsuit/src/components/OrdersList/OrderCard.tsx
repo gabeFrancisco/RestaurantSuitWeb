@@ -13,7 +13,7 @@ import orderStatusService from "../../services/orderStateService";
 import ProductOrderTable from "../ProductOrderTable/ProductOrderTable";
 import { OrderSheet } from "../../models/interfaces/OrderSheet";
 
-export default function OrderCard({orderSheet} : {orderSheet: OrderSheet}) {
+export default function OrderCard({ orderSheet }: { orderSheet: OrderSheet }) {
   const orderState = orderStatusService.returnStatus(orderSheet.orderState);
   const [showDetails, setShowDetails] = useState(false);
 
@@ -47,17 +47,21 @@ export default function OrderCard({orderSheet} : {orderSheet: OrderSheet}) {
             </Row>
             {showDetails ? (
               <div className="Details">
-                <ProductOrderTable productOrderList={orderSheet.productOrders}/>
+                <ProductOrderTable
+                  productOrderList={orderSheet.productOrders}
+                  hasQuantity={false}
+                />
                 <p>Pedido aberto por: {orderSheet.openBy}</p>
-              </div>) : <div />}
+              </div>
+            ) : (
+              <div />
+            )}
           </Column>
           <Column
             alignItems={AlignItems.Center}
             justifyContent={JustifyContent.Center}
           >
-            <h2 className="m-2">
-              {orderState}
-            </h2>
+            <h2 className="m-2">{orderState}</h2>
           </Column>
         </Row>
       </Card>

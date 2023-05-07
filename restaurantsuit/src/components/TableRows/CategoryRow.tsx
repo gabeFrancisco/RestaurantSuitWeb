@@ -96,7 +96,7 @@ export default function CategoryRow({category} : {category: Category}) {
           <td className="button-area">
             {categoryRemovalModal ? (
               <CategoryRemovalModal
-                categoryId={category.id}
+                categoryId={category.id as number}
                 categoryName={category.name}
                 closeHandler={closeCategoryRemovalModal}
               />

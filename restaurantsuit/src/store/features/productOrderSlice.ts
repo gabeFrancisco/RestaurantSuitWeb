@@ -1,4 +1,7 @@
-import { createSlice, PayloadAction, current } from "@reduxjs/toolkit";
+import {
+  createSlice,
+  PayloadAction
+} from "@reduxjs/toolkit";
 import { ProductOrder } from "../../models/interfaces/ProductOrder";
 
 interface ProductOrderState {
@@ -29,9 +32,13 @@ const initialState: ProductOrderState = {
 export const ProductOrderSlice = createSlice({
   name: "ProductOrders",
   initialState,
-  reducers: {},
+  reducers: {
+    addProductOrderToList: (state, action: PayloadAction<ProductOrder>) => {
+      state.productOrderList.push(action.payload);
+    },
+  },
   extraReducers: (builder) => {},
 });
 
 export default ProductOrderSlice.reducer;
-export const { } = ProductOrderSlice.actions;
+export const { addProductOrderToList } = ProductOrderSlice.actions;
