@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { ProductOrder } from "../../models/interfaces/ProductOrder";
+import { useAppDispatch } from "../../store/store";
+import { changeQuantity } from "../../store/features/productOrderSlice";
 
 export default function ProductOrderRow({
   productOrder,
@@ -9,7 +11,9 @@ export default function ProductOrderRow({
   hasQuantity: boolean;
 }) {
   const productTotal = productOrder.quantity * productOrder.product.price;
-  const [quantity, setQuantity] = useState(0);
+  const dispatch = useAppDispatch();
+  const [quantity, setQuantity] = useState(productOrder.quantity);
+
   return (
     <tr>
       <td>{productOrder.product.name}</td>
@@ -23,7 +27,12 @@ export default function ProductOrderRow({
             type="number"
             min={0}
             value={quantity}
-            onChange={(e) => setQuantity(parseInt(e.target.value))}
+            onChange={(e) => {
+              setQuantity(+e.target.value)
+              dispatch(
+                changeQuantity({ id: productOrder.id, quantity: quantity })
+              )
+            }}
             style={{ width: "5rem" }}
           />
         </td>

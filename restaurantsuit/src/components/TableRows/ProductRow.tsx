@@ -30,7 +30,7 @@ export default function ProductRow({
     dispatch(
       addProductOrderToList({
         id: productOrders.length + 1,
-        quantity: quantity,
+        quantity: 1,
         productId: product.id,
         product: products.find((p) => p.id === product.id) as Product,
       })

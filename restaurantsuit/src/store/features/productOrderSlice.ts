@@ -36,9 +36,13 @@ export const ProductOrderSlice = createSlice({
     addProductOrderToList: (state, action: PayloadAction<ProductOrder>) => {
       state.productOrderList.push(action.payload);
     },
+    changeQuantity: (state, action: PayloadAction<{id: number, quantity: number}>) => {
+      const orderIndex = state.productOrderList.findIndex(x => x.id === action.payload.id)
+      state.productOrderList[orderIndex].quantity = action.payload.quantity
+    }
   },
   extraReducers: (builder) => {},
 });
 
 export default ProductOrderSlice.reducer;
-export const { addProductOrderToList } = ProductOrderSlice.actions;
+export const { addProductOrderToList, changeQuantity } = ProductOrderSlice.actions;

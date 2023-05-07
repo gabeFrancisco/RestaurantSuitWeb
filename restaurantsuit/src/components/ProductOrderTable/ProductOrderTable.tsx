@@ -24,7 +24,10 @@ export default function ProductOrderTable({
         <tbody>
           {productOrderList.length > 0 ? (
             productOrderList.map((pOrder) => (
-              <ProductOrderRow productOrder={pOrder} hasQuantity={hasQuantity}/>
+              <ProductOrderRow
+                productOrder={pOrder}
+                hasQuantity={hasQuantity}
+              />
             ))
           ) : (
             <tr className="center">
