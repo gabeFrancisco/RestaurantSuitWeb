@@ -30,7 +30,7 @@ export default function ProductOrderRow({
             onChange={(e) => {
               setQuantity(+e.target.value)
               dispatch(
-                changeQuantity({ id: productOrder.id, quantity: quantity })
+                changeQuantity({ id: productOrder.id, quantity: +e.target.value })
               )
             }}
             style={{ width: "5rem" }}
