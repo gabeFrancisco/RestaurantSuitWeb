@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 import { ProductOrder } from "../../models/interfaces/ProductOrder";
 import { useAppDispatch } from "../../store/store";
-import { changeQuantity } from "../../store/features/productOrderSlice";
+import {
+  changeQuantity,
+  removeProductOrder,
+} from "../../store/features/productOrderSlice";
 
 export default function ProductOrderRow({
   productOrder,
   hasQuantity,
+  hasActions,
 }: {
   productOrder: ProductOrder;
   hasQuantity: boolean;
+  hasActions: boolean;
 }) {
   const productTotal = productOrder.quantity * productOrder.product.price;
   const dispatch = useAppDispatch();
@@ -28,16 +33,29 @@ export default function ProductOrderRow({
             min={0}
             value={quantity}
             onChange={(e) => {
-              setQuantity(+e.target.value)
+              setQuantity(+e.target.value);
               dispatch(
-                changeQuantity({ id: productOrder.id, quantity: +e.target.value })
-              )
+                changeQuantity({
+                  id: productOrder.id,
+                  quantity: +e.target.value,
+                })
+              );
             }}
             style={{ width: "5rem" }}
           />
         </td>
       )}
       <td>R${productTotal.toFixed(2)}</td>
+      {hasActions ? (
+        <td>
+          <button
+            className="btn-sm btn-danger"
+            onClick={() => dispatch(removeProductOrder(productOrder.id))}
+          >
+            <i className="fas fa-minus fa-fw"></i>
+          </button>
+        </td>
+      ) : null}
     </tr>
   );
 }

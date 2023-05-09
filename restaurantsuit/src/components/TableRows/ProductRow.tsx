@@ -4,7 +4,7 @@ import { setProduct } from "../../store/features/productsSlice";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import Dropdown from "../../widgets/Dropdown/Dropdown";
 import DropdownItem from "../../widgets/Dropdown/DropdownItem";
-import ProductRemovalModal from "../../modals/ProductRemovalModa";
+import ProductRemovalModal from "../../modals/ProductRemovalModal";
 import { Product } from "../../models/interfaces/Product";
 import { ProductOrder } from "../../models/interfaces/ProductOrder";
 import { addProductOrderToList } from "../../store/features/productOrderSlice";

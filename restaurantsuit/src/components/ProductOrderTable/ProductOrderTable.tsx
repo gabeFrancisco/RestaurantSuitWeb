@@ -5,9 +5,11 @@ import ProductOrderRow from "./ProductOrderRow";
 export default function ProductOrderTable({
   productOrderList,
   hasQuantity,
+  hasActions
 }: {
   productOrderList: Array<ProductOrder>;
   hasQuantity: boolean;
+  hasActions: boolean
 }) {
   return (
     <div className="Table-Area">
@@ -27,6 +29,7 @@ export default function ProductOrderTable({
               <ProductOrderRow
                 productOrder={pOrder}
                 hasQuantity={hasQuantity}
+                hasActions={hasActions}
               />
             ))
           ) : (

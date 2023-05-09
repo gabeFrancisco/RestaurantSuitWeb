@@ -33,7 +33,7 @@ export default function ProductOrderModal(props: Props) {
       <ProductTable isOrder={false} hasActions={false} />
       <hr />
       <h3 className="m-2">Confira e confirme:</h3>
-      <ProductOrderTable productOrderList={productOrders} hasQuantity={false}/>
+      <ProductOrderTable productOrderList={productOrders} hasQuantity={false} hasActions/>
       <div className="Button-Area">
         <button
           className="btn-primary m-2"
