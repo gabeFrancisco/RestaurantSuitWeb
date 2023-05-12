@@ -8,6 +8,7 @@ import {
 import Card from "../../widgets/Card/Card";
 import OrdersList from "../../components/OrdersList/OrdersList";
 import { useNavigate } from "react-router-dom";
+import OrderForm from "../../components/OrderForm/OrderForm";
 
 export default function OrdersPage() {
   const navigate = useNavigate();

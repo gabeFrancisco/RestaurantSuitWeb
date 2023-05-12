@@ -65,7 +65,7 @@ export default function OrderForm(props: Props) {
           </button>
           <div>Cliente: Nenhum selecionado</div>
         </Row>
-        <ProductOrderTable productOrderList={productOrders} hasQuantity/>
+        <ProductOrderTable productOrderList={productOrders} hasQuantity hasActions={false}/>
         <Row
           alignItems={AlignItems.Center}
           justifyContent={JustifyContent.Center}

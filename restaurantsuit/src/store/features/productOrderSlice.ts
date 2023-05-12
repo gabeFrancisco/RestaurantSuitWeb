@@ -14,7 +14,7 @@ const initialState: ProductOrderState = {
     id: -1,
     orderSheetId: -1,
     productId: -1,
-    quantity: 0,
+    quantity: 1,
     product: {
       id: -1,
       name: "",

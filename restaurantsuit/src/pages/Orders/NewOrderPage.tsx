@@ -7,6 +7,7 @@ export default function NewOrderPage(){
     <div className='PageFade'>
       <SectionTitle title='Novo pedido'/>
       <OrderForm isEdit={false}/>
+      
     </div>
   )
 }

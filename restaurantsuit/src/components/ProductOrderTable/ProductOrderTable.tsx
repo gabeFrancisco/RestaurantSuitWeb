@@ -5,11 +5,11 @@ import ProductOrderRow from "./ProductOrderRow";
 export default function ProductOrderTable({
   productOrderList,
   hasQuantity,
-  hasActions
+  hasActions,
 }: {
   productOrderList: Array<ProductOrder>;
   hasQuantity: boolean;
-  hasActions: boolean
+  hasActions: boolean;
 }) {
   return (
     <div className="Table-Area">
@@ -25,8 +25,9 @@ export default function ProductOrderTable({
         </thead>
         <tbody>
           {productOrderList.length > 0 ? (
-            productOrderList.map((pOrder) => (
+            productOrderList.map((pOrder, index) => (
               <ProductOrderRow
+                index={index}
                 productOrder={pOrder}
                 hasQuantity={hasQuantity}
                 hasActions={hasActions}

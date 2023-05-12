@@ -1,16 +1,18 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { ProductOrder } from "../../models/interfaces/ProductOrder";
-import { useAppDispatch } from "../../store/store";
+import { useAppDispatch, useAppSelector } from "../../store/store";
 import {
   changeQuantity,
   removeProductOrder,
 } from "../../store/features/productOrderSlice";
 
 export default function ProductOrderRow({
+  index,
   productOrder,
   hasQuantity,
   hasActions,
 }: {
+  index: number;
   productOrder: ProductOrder;
   hasQuantity: boolean;
   hasActions: boolean;
@@ -18,9 +20,10 @@ export default function ProductOrderRow({
   const productTotal = productOrder.quantity * productOrder.product.price;
   const dispatch = useAppDispatch();
   const [quantity, setQuantity] = useState(productOrder.quantity);
+  const ref = useRef(index);
 
   return (
-    <tr>
+    <tr key={index}>
       <td>{productOrder.product.name}</td>
       <td>{productOrder.product.categoryName}</td>
       <td>R${productOrder.product.price.toFixed(2)}</td>
@@ -29,17 +32,18 @@ export default function ProductOrderRow({
       ) : (
         <td>
           <input
+            ref={ref}
             type="number"
             min={0}
             value={quantity}
             onChange={(e) => {
-              setQuantity(+e.target.value);
               dispatch(
                 changeQuantity({
                   id: productOrder.id,
                   quantity: +e.target.value,
                 })
               );
+              setQuantity(+e.target.value);
             }}
             style={{ width: "5rem" }}
           />
@@ -50,7 +54,10 @@ export default function ProductOrderRow({
         <td>
           <button
             className="btn-sm btn-danger"
-            onClick={() => dispatch(removeProductOrder(productOrder.id))}
+            onClick={() => {
+              setQuantity(productOrder.quantity);
+              dispatch(removeProductOrder(productOrder.id));
+            }}
           >
             <i className="fas fa-minus fa-fw"></i>
           </button>

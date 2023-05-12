@@ -50,6 +50,7 @@ export default function OrderCard({ orderSheet }: { orderSheet: OrderSheet }) {
                 <ProductOrderTable
                   productOrderList={orderSheet.productOrders}
                   hasQuantity={false}
+                  hasActions
                 />
                 <p>Pedido aberto por: {orderSheet.openBy}</p>
               </div>
