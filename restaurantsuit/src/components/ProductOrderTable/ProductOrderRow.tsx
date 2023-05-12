@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ProductOrder } from "../../models/interfaces/ProductOrder";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import {
@@ -19,8 +19,11 @@ export default function ProductOrderRow({
 }) {
   const productTotal = productOrder.quantity * productOrder.product.price;
   const dispatch = useAppDispatch();
-  const [quantity, setQuantity] = useState(productOrder.quantity);
-  const ref = useRef(index);
+  const [quantity, setQuantity] = useState(1);
+
+  useEffect(() => {
+    setQuantity(productOrder.quantity)
+  }, [productOrder])
 
   return (
     <tr key={index}>
@@ -32,9 +35,9 @@ export default function ProductOrderRow({
       ) : (
         <td>
           <input
-            ref={ref}
+          key={productOrder.id}
             type="number"
-            min={0}
+            min={1}
             value={quantity}
             onChange={(e) => {
               dispatch(
@@ -55,7 +58,6 @@ export default function ProductOrderRow({
           <button
             className="btn-sm btn-danger"
             onClick={() => {
-              setQuantity(productOrder.quantity);
               dispatch(removeProductOrder(productOrder.id));
             }}
           >
