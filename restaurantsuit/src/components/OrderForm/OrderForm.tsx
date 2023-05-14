@@ -12,7 +12,7 @@ import { ProductOrder } from "../../models/interfaces/ProductOrder";
 import ProductOrderTable from "../ProductOrderTable/ProductOrderTable";
 import { useNavigate } from "react-router-dom";
 import ProductOrderModal from "../../modals/ProductOrderModal";
-import { emptyList } from "../../store/features/productOrderSlice";
+import { emptyList, sumAll } from "../../store/features/productOrderSlice";
 
 interface Props {
   isEdit: boolean;
@@ -26,9 +26,15 @@ export default function OrderForm(props: Props) {
     (state) => state.productOrders.productOrderList
   );
   const dispatch = useAppDispatch();
+  const total = useAppSelector(state => state.productOrders.total)
+
   useEffect(() => {
     dispatch(fetchAllTables());
   }, []);
+
+  useEffect(() => {
+    dispatch(sumAll())
+  }, [productOrders])
 
   const [productOrderModal, setProductOrderModal] = useState(false);
   const closeProductOrderModal = () => setProductOrderModal(false);
@@ -76,7 +82,7 @@ export default function OrderForm(props: Props) {
           alignItems={AlignItems.Center}
           justifyContent={JustifyContent.Right}
         >
-          <h2>Total: R$1000,00</h2>
+          <h2>Total: R${total.toFixed(2)}</h2>
         </Row>
         </div>
         

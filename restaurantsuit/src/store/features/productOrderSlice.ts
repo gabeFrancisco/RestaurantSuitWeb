@@ -58,12 +58,12 @@ export const ProductOrderSlice = createSlice({
     emptyList: (state) => {
       state.productOrderList.splice(0, state.productOrderList.length);
     },
-    // sumAll: (state) => {
-    //   state.total = state.productOrderList.reduce(
-    //     (sum, p) => sum + p.product.price,
-    //     0
-    //   );
-    // },
+    sumAll: (state) => {
+      state.total = state.productOrderList.reduce(
+        (sum, p) => sum + (p.product.price * p.quantity),
+        0
+      );
+    },
   },
   extraReducers: (builder) => {},
 });
@@ -74,4 +74,5 @@ export const {
   changeQuantity,
   removeProductOrder,
   emptyList,
+  sumAll
 } = ProductOrderSlice.actions;
