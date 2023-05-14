@@ -34,7 +34,11 @@ export const ProductOrderSlice = createSlice({
   initialState,
   reducers: {
     addProductOrderToList: (state, action: PayloadAction<ProductOrder>) => {
-      state.productOrderList.push(action.payload);
+      const productOrder = state.productOrderList.find(x => x.product.name === action.payload.product.name)
+      if(!productOrder){
+        state.productOrderList.push(action.payload);
+      }
+
     },
     changeQuantity: (state, action: PayloadAction<{id: number, quantity: number}>) => {
       const orderIndex = state.productOrderList.findIndex(x => x.id === action.payload.id)
