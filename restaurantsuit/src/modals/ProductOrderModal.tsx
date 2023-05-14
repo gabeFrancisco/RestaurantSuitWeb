@@ -5,19 +5,21 @@ import "./ModalStyle.css";
 import { useAppSelector } from "../store/store";
 import ProductTable from "../components/ProductTable/ProductTable";
 import ProductOrderTable from "../components/ProductOrderTable/ProductOrderTable";
+import { useDispatch } from "react-redux";
+import { emptyList } from "../store/features/productOrderSlice";
 
 interface Props {
   closeHandler: () => void;
 }
 
 export default function ProductOrderModal(props: Props) {
+  const dispatch = useDispatch();
   const products = useAppSelector((state) => state.products.productList);
   const productOrders = useAppSelector(
     (state) => state.productOrders.productOrderList
   );
   return (
     <Modal
-    
       isOpen={true}
       style={{
         content: {
@@ -33,15 +35,19 @@ export default function ProductOrderModal(props: Props) {
       <ProductTable isOrder={false} hasActions={false} />
       <hr />
       <h3 className="m-2">Confira e confirme:</h3>
-      <ProductOrderTable productOrderList={productOrders} hasQuantity={false} hasActions/>
+      <ProductOrderTable
+        productOrderList={productOrders}
+        hasQuantity={false}
+        hasActions
+      />
       <div className="Button-Area">
-        <button
-          className="btn-primary m-2"
-          onClick={() => props.closeHandler()}
-        >
-          Cancelar
+        <button className="btn-primary m-2" onClick={() => {
+          props.closeHandler()
+          dispatch(emptyList())
+        }}>Cancelar</button>
+        <button className="btn-danger m-2" onClick={() => props.closeHandler()}>
+          Adicionar!
         </button>
-        <button className="btn-danger m-2">Adicionar!</button>
       </div>
     </Modal>
   );
