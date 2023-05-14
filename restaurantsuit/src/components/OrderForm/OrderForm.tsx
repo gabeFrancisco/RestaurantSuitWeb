@@ -12,6 +12,7 @@ import { ProductOrder } from "../../models/interfaces/ProductOrder";
 import ProductOrderTable from "../ProductOrderTable/ProductOrderTable";
 import { useNavigate } from "react-router-dom";
 import ProductOrderModal from "../../modals/ProductOrderModal";
+import { emptyList } from "../../store/features/productOrderSlice";
 
 interface Props {
   isEdit: boolean;
@@ -65,12 +66,31 @@ export default function OrderForm(props: Props) {
           </button>
           <div>Cliente: Nenhum selecionado</div>
         </Row>
-        <ProductOrderTable productOrderList={productOrders} hasQuantity hasActions={false}/>
+        <ProductOrderTable
+          productOrderList={productOrders}
+          hasQuantity
+          hasActions={false}
+        />
+        <div className="m-3">
+        <Row
+          alignItems={AlignItems.Center}
+          justifyContent={JustifyContent.Right}
+        >
+          <h2>Total: R$1000,00</h2>
+        </Row>
+        </div>
+        
         <Row
           alignItems={AlignItems.Center}
           justifyContent={JustifyContent.Center}
         >
-          <button className="btn btn-danger" onClick={() => navigate(-1)}>
+          <button
+            className="btn btn-danger"
+            onClick={() => {
+              dispatch(emptyList());
+              navigate(-1);
+            }}
+          >
             Cancelar
           </button>
           <button className="btn btn-primary">

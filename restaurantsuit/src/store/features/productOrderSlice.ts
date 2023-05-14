@@ -4,6 +4,7 @@ import { ProductOrder } from "../../models/interfaces/ProductOrder";
 interface ProductOrderState {
   productOrder: ProductOrder;
   productOrderList: Array<ProductOrder>;
+  total: number;
 }
 
 const initialState: ProductOrderState = {
@@ -24,13 +25,14 @@ const initialState: ProductOrderState = {
     },
   },
   productOrderList: new Array<ProductOrder>(),
+  total: 0
 };
 
 export const ProductOrderSlice = createSlice({
   name: "ProductOrders",
   initialState,
   reducers: {
-    addProductOrderToList: (state, action: PayloadAction<ProductOrder>) => {
+    addProductOrderToList: (state, action: PayloadAction<ProductOrder>,) => {
       const productOrder = state.productOrderList.find(
         (x) => x.product.name === action.payload.product.name
       );
@@ -56,10 +58,20 @@ export const ProductOrderSlice = createSlice({
     emptyList: (state) => {
       state.productOrderList.splice(0, state.productOrderList.length);
     },
+    // sumAll: (state) => {
+    //   state.total = state.productOrderList.reduce(
+    //     (sum, p) => sum + p.product.price,
+    //     0
+    //   );
+    // },
   },
   extraReducers: (builder) => {},
 });
 
 export default ProductOrderSlice.reducer;
-export const { addProductOrderToList, changeQuantity, removeProductOrder, emptyList } =
-  ProductOrderSlice.actions;
+export const {
+  addProductOrderToList,
+  changeQuantity,
+  removeProductOrder,
+  emptyList,
+} = ProductOrderSlice.actions;
