@@ -6,7 +6,7 @@ import { useAppSelector } from "../store/store";
 import ProductTable from "../components/ProductTable/ProductTable";
 import ProductOrderTable from "../components/ProductOrderTable/ProductOrderTable";
 import { useDispatch } from "react-redux";
-import { emptyList } from "../store/features/productOrderSlice";
+import { emptyList, fillFinalList } from "../store/features/productOrderSlice";
 
 interface Props {
   closeHandler: () => void;
@@ -45,7 +45,10 @@ export default function ProductOrderModal(props: Props) {
           props.closeHandler()
           dispatch(emptyList())
         }}>Cancelar</button>
-        <button className="btn-danger m-2" onClick={() => props.closeHandler()}>
+        <button className="btn-danger m-2" onClick={() => {
+          dispatch(fillFinalList())
+          props.closeHandler()
+        }}>
           Adicionar!
         </button>
       </div>

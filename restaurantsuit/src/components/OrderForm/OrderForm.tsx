@@ -12,7 +12,7 @@ import { ProductOrder } from "../../models/interfaces/ProductOrder";
 import ProductOrderTable from "../ProductOrderTable/ProductOrderTable";
 import { useNavigate } from "react-router-dom";
 import ProductOrderModal from "../../modals/ProductOrderModal";
-import { emptyList, sumAll } from "../../store/features/productOrderSlice";
+import { emptyFinalList, emptyList, sumAll } from "../../store/features/productOrderSlice";
 
 interface Props {
   isEdit: boolean;
@@ -22,8 +22,8 @@ export default function OrderForm(props: Props) {
   const navigate = useNavigate();
   const tables = useAppSelector((state) => state.tables.tableList);
   const orderSheet = useAppSelector((state) => state.orderSheets.orderSheet);
-  const productOrders = useAppSelector(
-    (state) => state.productOrders.productOrderList
+  const productFinalOrders = useAppSelector(
+    (state) => state.productOrders.productOrderFinalList
   );
   const dispatch = useAppDispatch();
   const total = useAppSelector(state => state.productOrders.total)
@@ -34,7 +34,7 @@ export default function OrderForm(props: Props) {
 
   useEffect(() => {
     dispatch(sumAll())
-  }, [productOrders])
+  }, [productFinalOrders])
 
   const [productOrderModal, setProductOrderModal] = useState(false);
   const closeProductOrderModal = () => setProductOrderModal(false);
@@ -73,7 +73,7 @@ export default function OrderForm(props: Props) {
           <div>Cliente: Nenhum selecionado</div>
         </Row>
         <ProductOrderTable
-          productOrderList={productOrders}
+          productOrderList={productFinalOrders}
           hasQuantity
           hasActions={false}
         />
@@ -93,7 +93,7 @@ export default function OrderForm(props: Props) {
           <button
             className="btn btn-danger"
             onClick={() => {
-              dispatch(emptyList());
+              dispatch(emptyFinalList());
               navigate(-1);
             }}
           >

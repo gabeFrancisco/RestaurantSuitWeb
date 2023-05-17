@@ -4,6 +4,7 @@ import { ProductOrder } from "../../models/interfaces/ProductOrder";
 interface ProductOrderState {
   productOrder: ProductOrder;
   productOrderList: Array<ProductOrder>;
+  productOrderFinalList: Array<ProductOrder>;
   total: number;
 }
 
@@ -25,20 +26,27 @@ const initialState: ProductOrderState = {
     },
   },
   productOrderList: new Array<ProductOrder>(),
-  total: 0
+  productOrderFinalList: new Array<ProductOrder>(),
+  total: 0,
 };
 
 export const ProductOrderSlice = createSlice({
   name: "ProductOrders",
   initialState,
   reducers: {
-    addProductOrderToList: (state, action: PayloadAction<ProductOrder>,) => {
+    addProductOrderToList: (state, action: PayloadAction<ProductOrder>) => {
       const productOrder = state.productOrderList.find(
         (x) => x.product.name === action.payload.product.name
       );
       if (!productOrder) {
         state.productOrderList.push(action.payload);
       }
+    },
+    fillFinalList: (state) => {
+      state.productOrderFinalList = state.productOrderList;
+    },
+    emptyFinalList: (state) => {
+      state.productOrderFinalList.splice(0, state.productOrderFinalList.length);
     },
     changeQuantity: (
       state,
@@ -60,7 +68,7 @@ export const ProductOrderSlice = createSlice({
     },
     sumAll: (state) => {
       state.total = state.productOrderList.reduce(
-        (sum, p) => sum + (p.product.price * p.quantity),
+        (sum, p) => sum + p.product.price * p.quantity,
         0
       );
     },
@@ -71,8 +79,10 @@ export const ProductOrderSlice = createSlice({
 export default ProductOrderSlice.reducer;
 export const {
   addProductOrderToList,
+  fillFinalList,
+  emptyFinalList,
   changeQuantity,
   removeProductOrder,
   emptyList,
-  sumAll
+  sumAll,
 } = ProductOrderSlice.actions;
