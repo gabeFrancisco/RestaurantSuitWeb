@@ -24,8 +24,6 @@ export default function ProductRemovalModal(props: Props) {
         },
       }}
     >
-      {/* <h3>Are you sure you want to remove this category?</h3> */}
-
       <h3>
         Você tem certeza que deseja remover o produto <b>{props.productName}</b>
         ?
@@ -39,7 +37,6 @@ export default function ProductRemovalModal(props: Props) {
           className="btn-danger"
           onClick={() => {
             dispatch(removeProduct(props.productId));
-            console.log("clickeeeeed!")
             props.closeHandler();
           }}
         >

@@ -12,7 +12,14 @@ import { ProductOrder } from "../../models/interfaces/ProductOrder";
 import ProductOrderTable from "../ProductOrderTable/ProductOrderTable";
 import { useNavigate } from "react-router-dom";
 import ProductOrderModal from "../../modals/ProductOrderModal";
-import { emptyFinalList, emptyList, sumAll } from "../../store/features/productOrderSlice";
+import {
+  emptyFinalList,
+  emptyList,
+  sumAll,
+} from "../../store/features/productOrderSlice";
+import { OrderSheet } from "../../models/interfaces/OrderSheet";
+import { useFormik } from "formik";
+import { addOrder } from "../../store/features/orderSheetSlice";
 
 interface Props {
   isEdit: boolean;
@@ -26,18 +33,38 @@ export default function OrderForm(props: Props) {
     (state) => state.productOrders.productOrderFinalList
   );
   const dispatch = useAppDispatch();
-  const total = useAppSelector(state => state.productOrders.total)
+  const total = useAppSelector((state) => state.productOrders.total);
+  const user = useAppSelector((state) => state.auth.user);
 
   useEffect(() => {
     dispatch(fetchAllTables());
   }, []);
 
   useEffect(() => {
-    dispatch(sumAll())
-  }, [productFinalOrders])
+    dispatch(sumAll());
+  }, [productFinalOrders]);
 
   const [productOrderModal, setProductOrderModal] = useState(false);
   const closeProductOrderModal = () => setProductOrderModal(false);
+  const formik = useFormik({
+    initialValues: {
+      tableId: 0,
+    },
+    onSubmit: (values) => {
+      let order: OrderSheet = {
+        id: 0,
+        orderState: 0,
+        openBy: user.username,
+        tableId: values.tableId,
+        customerId: 1,
+        productOrders: productFinalOrders,
+      };
+      console.log(order);
+      dispatch(addOrder(order)).then(() => {
+        navigate("/orders");
+      });
+    },
+  });
 
   return (
     <div className="PageFade m-2">
@@ -55,8 +82,14 @@ export default function OrderForm(props: Props) {
           >
             <i className="fas fa-plus fa-fw"></i>Adiconar produto
           </button>
-          <select className="btn btn-success" name="tableId" id="tableId">
-            <option value="" disabled selected>
+          <select
+            className="btn btn-success"
+            name="tableId"
+            id="tableId"
+            value={formik.values.tableId}
+            onChange={formik.handleChange}
+          >
+            <option disabled selected>
               Número da mesa{" "}
             </option>
             {tables ? (
@@ -78,14 +111,14 @@ export default function OrderForm(props: Props) {
           hasActions={false}
         />
         <div className="m-3">
-        <Row
-          alignItems={AlignItems.Center}
-          justifyContent={JustifyContent.Right}
-        >
-          <h2>Total: R${total.toFixed(2)}</h2>
-        </Row>
+          <Row
+            alignItems={AlignItems.Center}
+            justifyContent={JustifyContent.Right}
+          >
+            <h2>Total: R${total.toFixed(2)}</h2>
+          </Row>
         </div>
-        
+
         <Row
           alignItems={AlignItems.Center}
           justifyContent={JustifyContent.Center}
@@ -99,7 +132,11 @@ export default function OrderForm(props: Props) {
           >
             Cancelar
           </button>
-          <button className="btn btn-primary">
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={() => formik.handleSubmit()}
+          >
             <i className="fas fa-ticket fa-fw"></i>Criar pedido!
           </button>
         </Row>

@@ -32,7 +32,7 @@ export default function OrdersList() {
               orderSheet={orderSheet}
               />
             ))
-          ) : (
+          ).reverse() : (
             <Center>
               <h2 className="m-3">Por enquanto não há nada aqui ;)</h2>
             </Center>

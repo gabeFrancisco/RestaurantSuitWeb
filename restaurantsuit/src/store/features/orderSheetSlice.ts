@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import apiService from "../../services/apiService";
 import { OrderSheet } from "../../models/interfaces/OrderSheet";
 
@@ -45,7 +45,11 @@ export const addOrder = createAsyncThunk(
 export const OrderSheetSlice = createSlice({
   name: "OrderSheets",
   initialState,
-  reducers: {},
+  reducers: {
+    selectTable: (state, action: PayloadAction<number>) => {
+      state.orderSheet.tableId = action.payload
+    }
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchAllOrderSheets.fulfilled, (state, action) => {
       state.orderSheetList = action.payload;

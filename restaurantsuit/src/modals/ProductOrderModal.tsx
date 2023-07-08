@@ -14,7 +14,6 @@ interface Props {
 
 export default function ProductOrderModal(props: Props) {
   const dispatch = useDispatch();
-  const products = useAppSelector((state) => state.products.productList);
   const productOrders = useAppSelector(
     (state) => state.productOrders.productOrderList
   );
